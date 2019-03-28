@@ -1,14 +1,8 @@
 const initialState = {
-  header: {
-    ownerName: 'Enrique Gutiérrez',
-    profession: 'Software Engineer - Game Developer'
-  },
-  sidebar: {
-    locationInfo: {
-      currentLocation: 'Callao, Peru',
-      timeZone: 'UTC -4:00'
-    }
-  }
+  ownerName: 'Enrique Gutiérrez',
+  profession: 'Software Engineer - Game Developer',
+  currentLocation: 'Callao, Peru',
+  timeZone: 'UTC -4:00'
 }
 
 const SideHeaderReducer = (state = initialState, action) => {

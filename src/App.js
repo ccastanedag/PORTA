@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <SideHeader />
+        <SideHeader/>
         <Switch>
           <Route path='/contact-me' component={ContactMe}/>
           <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail}/>
