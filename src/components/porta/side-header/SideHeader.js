@@ -18,16 +18,17 @@ export class SideHeader extends Component {
 }
 
 const mapStateToProps = (state) => {
- 
   if (state.firestore.ordered.sideheader !== undefined) {
+    const sideheader = state.firestore.ordered.sideheader[0]
+    const {header, sidebar} = sideheader
     return {
       header: {
-        ownerName: state.firestore.ordered.sideheader[0].ownerName,
-        profession: state.firestore.ordered.sideheader[0].profession
+        ownerName: header.ownerName,
+        profession: header.profession
       },
       sidebar: {
-        currentLocation: state.firestore.ordered.sideheader[0].currentLocation,
-        timeZone: state.firestore.ordered.sideheader[0].timeZone
+        currentLocation: sidebar.currentLocation,
+        timeZone: sidebar.timeZone
       }
     }
   } else {
