@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 export class Sidebar extends Component {
   render() {
+    const { sidebar } = this.props
+    const {locationInfo} = sidebar
     return (
       <div>
         <div>
           <h3>Current Location</h3>
-          <h4>Lima, Peru</h4>
+          <h4>{locationInfo.currentLocation}</h4>
         </div>
         <div>
           <h3>Timezone</h3>
-          <h4>UTC -5:00</h4>
+          <h4>{locationInfo.timeZone}</h4>
         </div>
         <div>
           <p>Other buttons goes here</p>
@@ -33,6 +36,10 @@ export class Sidebar extends Component {
       </div>
     )
   }
+}
+
+Sidebar.propTypes = {
+  sidebar : PropTypes.object.isRequired
 }
 
 export default Sidebar

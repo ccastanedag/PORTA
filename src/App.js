@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Sidebar from './components/porta/side-header/Sidebar'
-import Header from './components/porta/side-header/Header'
+import SideHeader from './components/porta/side-header/SideHeader'
 import ContactMe from './components/porta/contact-me/ContactMe'
 import Portafolio from './components/porta/portafolio/Portafolio'
 import WorkExperience from './components/porta/work-experience/WorkExperience'
@@ -13,8 +12,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Header />
-        <Sidebar />
+        <SideHeader />
         <Switch>
           <Route path='/contact-me' component={ContactMe}/>
           <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail}/>
