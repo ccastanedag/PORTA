@@ -2,47 +2,49 @@ import React, { Component } from 'react'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
+import handleLoadingSidebar from '../../../store/actions/porta/side-header/SideHeaderActions'
 
 export class SideHeader extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleLoadingSidebar())
+  }
   render() {
-    const { header, sidebar } = this.props
+    const { isFetching, error, header, sidebar } = this.props
+    if (error !== null && error !== '') {
+      return (
+        <div>
+          <p>THERE WAS AN ERROR: {error}</p>
+        </div>
+      )
+    }
+
+    if (header !== undefined && sidebar !== undefined) {
+      return (
+        <div>
+          <Header header={header} />
+          <Sidebar sidebar={sidebar} />
+        </div>
+      )
+    }
+
     return (
       <div>
-        {header !== null ? <Header header={header} /> : <p>Loading...</p>}
-        {sidebar !== null ? <Sidebar sidebar={sidebar} /> : <p>Loading...</p>}
+        {isFetching && <p>LOADING...</p>}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  if (state.firestore.ordered.sideheader !== undefined) {
-    const sideheader = state.firestore.ordered.sideheader[0]
-    const {header, sidebar} = sideheader
-    return {
-      header: {
-        ownerName: header.ownerName,
-        profession: header.profession
-      },
-      sidebar: {
-        currentLocation: sidebar.currentLocation,
-        timeZone: sidebar.timeZone
-      }
-    }
-  } else {
-    return {
-      header: null,
-      sidebar: null,
-    }
+  const { sideHeader } = state
+  const { isFetching, error, data } = sideHeader
+  const { header, sidebar } = data
+  return {
+    isFetching,
+    error,
+    header,
+    sidebar
   }
-
 }
 
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([
-    { collection: 'sideheader' }
-  ])
-)(SideHeader)
+export default connect(mapStateToProps)(SideHeader)

@@ -12,7 +12,7 @@ const Header = ({ header }) => {
 }
 
 Header.propTypes = {
-  header : propTypes.object.isRequired
+  header: propTypes.object.isRequired
 }
 
 export default Header
