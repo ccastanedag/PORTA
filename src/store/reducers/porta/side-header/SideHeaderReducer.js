@@ -3,7 +3,7 @@ export const FETCHING_SIDEBAR_ERROR = 'FETCHING_SIDEBAR_ERROR'
 export const FETCHING_SIDEBAR_SUCCESS = 'FETCHING_SIDEBAR_SUCCESS'
 
 const initialState = {
-  data: {},
+  data: undefined,
   isFetching: false,
   error: ''
 }

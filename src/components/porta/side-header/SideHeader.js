@@ -5,31 +5,33 @@ import { connect } from 'react-redux'
 import handleLoadingSidebar from '../../../store/actions/porta/side-header/SideHeaderActions'
 
 export class SideHeader extends Component {
+  state = {
+    isFetching: false,
+    error: '',
+    sideHeaderData: undefined
+  }
+
   componentDidMount() {
     this.props.dispatch(handleLoadingSidebar())
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props !== prevProps){
+      this.setState({
+        isFetching: this.props.isFetching,
+        error: this.props.error,
+        sideHeaderData: this.props.sideHeaderData
+      })
+    }
+  }
+
   render() {
-    const { isFetching, error, header, sidebar } = this.props
-    if (error !== null && error !== '') {
-      return (
-        <div>
-          <p>THERE WAS AN ERROR: {error}</p>
-        </div>
-      )
-    }
-
-    if (header !== undefined && sidebar !== undefined) {
-      return (
-        <div>
-          <Header header={header} />
-          <Sidebar sidebar={sidebar} />
-        </div>
-      )
-    }
-
+    const { isFetching, sideHeaderData } = this.state
     return (
       <div>
         {isFetching && <p>LOADING...</p>}
+        {sideHeaderData && <Header header={sideHeaderData.SideHeader.header} />}
+        {sideHeaderData && <Sidebar sidebar={sideHeaderData.SideHeader.sidebar} />}
       </div>
     )
   }
@@ -38,12 +40,10 @@ export class SideHeader extends Component {
 const mapStateToProps = (state) => {
   const { sideHeader } = state
   const { isFetching, error, data } = sideHeader
-  const { header, sidebar } = data
   return {
     isFetching,
     error,
-    header,
-    sidebar
+    sideHeaderData: data
   }
 }
 
