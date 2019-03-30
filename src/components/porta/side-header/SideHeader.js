@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import { connect } from 'react-redux'
 import handleLoadingSidebar from '../../../store/actions/porta/side-header/SideHeaderActions'
 
+
 export class SideHeader extends Component {
   state = {
     isFetching: false,
@@ -16,7 +17,7 @@ export class SideHeader extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props !== prevProps){
+    if (this.props !== prevProps) {
       this.setState({
         isFetching: this.props.isFetching,
         error: this.props.error,
@@ -26,14 +27,37 @@ export class SideHeader extends Component {
   }
 
   render() {
-    const { isFetching, sideHeaderData } = this.state
-    return (
-      <div>
-        {isFetching && <p>LOADING...</p>}
-        {sideHeaderData && <Header header={sideHeaderData.SideHeader.header} />}
-        {sideHeaderData && <Sidebar sidebar={sideHeaderData.SideHeader.sidebar} />}
-      </div>
-    )
+    const { isFetching, sideHeaderData, error } = this.state
+
+    if (isFetching === true) {
+      return (
+        <div>
+          LOADING...
+        </div>
+      )
+    }
+
+    if (error) {
+      return (
+        <div>
+          THERE WAS AN ERROR !!!
+          {console.log('ERROR: ',error)}
+        </div>
+      )
+    }
+
+    // Data loaded succesfully
+    if (sideHeaderData !== undefined) {
+      return (
+        <div>
+          <Header headerData={sideHeaderData.SideHeader.header} buttonsData={sideHeaderData.Buttons}/>
+          <Sidebar sidebar={sideHeaderData.SideHeader.sidebar} buttonsData={sideHeaderData.Buttons}/>
+        </div>
+      )
+    }
+
+    return null
+
   }
 }
 

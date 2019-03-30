@@ -34,9 +34,14 @@ export default function handleLoadingSidebar() {
     ])
       .then(([sideHeaderDoc, snapShotButtons]) => {
         const SideHeader = sideHeaderDoc.data()
+        let Buttons = []
+        snapShotButtons.forEach((button)=>{
+          Buttons.push(button.data())
+        })
+        
         const result = {
           SideHeader,
-          Buttons: snapShotButtons
+          Buttons
         }
         dispatch(loadingSidebarSuccess(result))
       })

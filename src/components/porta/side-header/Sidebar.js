@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import { getElementFromListByAttribute } from '../../../utils/utils'
+import ButtonFactory from '../../shared/ButtonFactory'
 
 export class Sidebar extends Component {
   render() {
-    const { sidebar } = this.props
-    
+    const { sidebar, buttonsData } = this.props
+    const { buttons } = sidebar
     return (
       <div>
         <div>
@@ -17,7 +19,12 @@ export class Sidebar extends Component {
           <h4>{sidebar.timeZone}</h4>
         </div>
         <div>
-          <p>Other buttons goes here</p>
+          {buttons.map(buttonName => {
+            const styleData = getElementFromListByAttribute(buttonsData, 'buttonText', buttonName)
+            if (styleData !== null) {
+              return <ButtonFactory styleData={styleData} key={buttonName} />
+            }
+          })}
           <Link to='/contact-me'>
             <button>Contact Me</button>
           </Link>
@@ -39,7 +46,8 @@ export class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  sidebar : PropTypes.object.isRequired
+  sidebar: PropTypes.object.isRequired,
+  buttonsData: PropTypes.array.isRequired
 }
 
 export default Sidebar
