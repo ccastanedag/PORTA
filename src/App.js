@@ -7,8 +7,15 @@ import Portafolio from './components/porta/portafolio/Portafolio'
 import WorkExperience from './components/porta/work-experience/WorkExperience'
 import Education from './components/porta/education/Education'
 import PortafolioDetail from './components/porta/portafolio-details/PortafolioDetail'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
+  componentDidMount(){
+    library.add(fab, far, fas)
+  }
   render() {
     return (
       <BrowserRouter>
