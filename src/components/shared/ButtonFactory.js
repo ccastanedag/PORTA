@@ -2,7 +2,6 @@ import React from 'react'
 import withStyles from 'react-jss'
 import PropTypes from 'prop-types'
 import Fab from '@material-ui/core/Fab'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
 
 const styles = {

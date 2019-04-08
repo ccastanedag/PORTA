@@ -17,6 +17,7 @@ const Header = ({ headerData, buttonsData }) => {
         if (styleData !== null) {
           return <ButtonFactory styleData={styleData} key={buttonName} />
         }
+        return null
       })}
     </div>
   )
