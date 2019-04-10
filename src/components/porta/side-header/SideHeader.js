@@ -10,9 +10,7 @@ import { getElementFromListByAttribute } from '../../../utils/utils'
 import withStyles from 'react-jss'
 import { compose } from 'redux'
 import Particles from 'react-particles-js'
-import particles from '../../../utils/particles.json'
 import { particlesSettings } from '../../../utils/utils'
-
 
 const styles = {
   sideHeaderContainer: {
@@ -153,6 +151,7 @@ export class SideHeader extends Component {
             params={particlesSettings}
             style={{ position: 'absolute', top: '0', background: '#F4F7FD', 'zIndex': '-2' }}
           />
+          
         </div>
       )
     }

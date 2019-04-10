@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button'
 
 const styles = {
   icon: {
-    marginRight: '0.35em'
+    marginRight: '0.35em',
+    fontSize: '1.25em'
   },
   button: {
     background: (props) => `linear-gradient(to left, ${props.gradient.start} 0%, ${props.gradient.end} 100%)`,
@@ -40,12 +41,10 @@ const styles = {
 const ButtonFactory = ({ classes, buttonText, fontAwesomeIcon }) => {
   return (
     <div>
-
       <Button className={classes.button}>
         <i className={`${fontAwesomeIcon} ${classes.icon}`}></i>
         {buttonText}
       </Button>
-
     </div>
   )
 }
