@@ -57,7 +57,7 @@ const styles = {
   },
   mobileMenuContainer: {
     position: 'absolute',
-    top: '2.9em',
+    top: '2.8em',
     left: '0',
     zIndex: '4',
     width: '60%'
