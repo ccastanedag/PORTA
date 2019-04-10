@@ -24,6 +24,17 @@ const styles = {
     fontFamily: 'Lato',
     fontSize: '0.875em',
     color: '#757892'
+  },
+  '@media screen and (min-width: 768px)': {
+    title: {
+      fontSize: '1.5em'
+    },
+    text: {
+      fontSize: '1.3125em'
+    },
+    locationInfoContainer : {
+      paddingBottom: '0'
+    }
   }
 }
 

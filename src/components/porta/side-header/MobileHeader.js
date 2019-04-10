@@ -64,6 +64,20 @@ const styles = {
     right: '0',
     bottom: '0',
     zIndex: '3'
+  },
+  '@media screen and (min-width: 768px)' : {
+    ownerNameText : {
+      fontSize: '1.75em',
+      paddingTop: '0.4em',
+      paddingBottom: '0.4em'
+    },
+    hamburguer: {
+      fontSize: '1.75em'
+    },
+    mobileMenuContainer : {
+      top: '3.25em',
+      width: '35%'
+    }
   }
 }
 

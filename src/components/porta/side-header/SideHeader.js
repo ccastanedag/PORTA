@@ -112,6 +112,7 @@ export class SideHeader extends Component {
       return (
         <div>
           THERE WAS AN ERROR !!!
+          <p>{error}</p>
           {console.log('ERROR: ', error)}
         </div>
       )

@@ -3,11 +3,6 @@ import withStyles from 'react-jss'
 import PropTypes from 'prop-types'
 
 const styles = {
-
-  // '@font-face': {
-  //   fontFamily: 'Montserrat',
-  //   src: 'url(https://fonts.googleapis.com/css?family=Montserrat)'
-  // },
   professionContainer: {
     display: 'flex',
     justifyContent: 'center',
@@ -18,6 +13,11 @@ const styles = {
     fontSize: '1em',
     color: '#757892',
     fontWeight: '600',
+  },
+  '@media screen and (min-width: 768px)': {
+    profession : {
+      fontSize: '1.5em'
+    }
   }
 }
 

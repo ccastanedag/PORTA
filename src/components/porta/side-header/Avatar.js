@@ -27,8 +27,17 @@ const styles = {
       width: '2px',
       color: '#86A8E7'
     },
-    position:'absolute',
+    position: 'absolute',
     zIndex: '2'
+  },
+  '@media screen and (min-width: 768px)': {
+    avatar: {
+      width: '10em'
+    },
+    shadow: {
+      width: '11em',
+      height: '11em',
+    }
   }
 }
 
@@ -36,7 +45,7 @@ const Avatar = ({ classes, avatar }) => {
   return (
     <div className={classes.avatarContainer}>
       <div className={classes.shadow}>
-        
+
       </div>
       <img className={classes.avatar} src={avatar} alt='user avatar' />
     </div>

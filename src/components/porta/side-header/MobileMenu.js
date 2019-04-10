@@ -44,6 +44,11 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     marginLeft: '1.5em'
+  },
+  '@media screen and (min-width: 768px)' : {
+    mobileMenuContainer : {
+      height: '250px'
+    }
   }
 }
 

@@ -34,6 +34,14 @@ const styles = {
       width: '100%',
       borderRadius: '2em',
       opacity: '0.55'
+    },
+  },
+  '@media screen and (min-width: 768px)' : {
+    button : {
+      fontSize : '1.25em',
+    },
+    icon : {
+      fontSize: '1.5625em'
     }
   }
 }
