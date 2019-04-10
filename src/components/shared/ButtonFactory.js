@@ -29,18 +29,21 @@ const styles = {
       background: 'inherit',
       filter: 'blur(10px)',
       bottom: '-10px',
-      left:  '0%',
+      left: '0%',
       height: '110%',
       width: '100%',
       borderRadius: '2em',
       opacity: '0.55'
     },
   },
-  '@media screen and (min-width: 768px)' : {
-    button : {
-      fontSize : '1.25em',
+  '@media screen and (min-width: 768px)': {
+    button: {
+      fontSize: '1.25em',
+      padding: '0.5em 1.5em',
+      marginTop: '0.8em',
+      marginBottom: '0.8em'
     },
-    icon : {
+    icon: {
       fontSize: '1.5625em'
     }
   }

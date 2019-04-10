@@ -6,8 +6,7 @@ const styles = {
   locationInfoContainer: {
     display: 'flex',
     alignItems: 'center',
-    flexDirection: 'column',
-    paddingBottom: '1.2em'
+    flexDirection: 'column'
   },
   infoContainer: {
     padding: '0.35em 0',
@@ -31,9 +30,6 @@ const styles = {
     },
     text: {
       fontSize: '1.3125em'
-    },
-    locationInfoContainer : {
-      paddingBottom: '0'
     }
   }
 }

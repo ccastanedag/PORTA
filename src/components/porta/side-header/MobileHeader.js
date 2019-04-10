@@ -7,11 +7,17 @@ import posed from 'react-pose'
 const AnimatedMenuContainer = posed.div({
   visible: {
     left: -10,
-    transition: { type: 'spring', stiffness: 60 }
+    transition: {
+      duration: 300,
+      ease: 'backOut'
+    }
   },
   hidden: {
     left: '-100%',
-    transition: { type: 'spring', stiffness: 80 }
+    transition: {
+      duration: 300,
+      ease: 'backIn'
+    }
   }
 })
 

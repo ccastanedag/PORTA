@@ -6,7 +6,7 @@ const styles = {
   professionContainer: {
     display: 'flex',
     justifyContent: 'center',
-    padding: '0.75em 0'
+    // padding: '0.75em 0'
   },
   profession: {
     fontFamily : 'Montserrat',

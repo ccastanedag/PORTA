@@ -7,8 +7,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
-    padding: '2.5em 0 1.5em 0',
+    flexDirection: 'column'
   },
   shadow: {
     width: '7em',
