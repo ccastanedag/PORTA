@@ -170,7 +170,6 @@ export class SideHeader extends Component {
                 fontAwesomeIcon='fas fa-envelope'
                 gradient={{ start: '#F83D83', end: '#E35D58' }} />
               {this.mapButtonsText(sidebar.buttons, Buttons)}
-              {this.mapButtonsText(header.buttons, Buttons)}
             </div>
             <Particles
               height='100%'

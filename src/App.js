@@ -1,28 +1,119 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import SideHeader from './components/porta/side-header/SideHeader'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import ContactMe from './components/porta/contact-me/ContactMe'
 import Portafolio from './components/porta/portafolio/Portafolio'
 import WorkExperience from './components/porta/work-experience/WorkExperience'
 import Education from './components/porta/education/Education'
 import PortafolioDetail from './components/porta/portafolio-details/PortafolioDetail'
+import withStyles from 'react-jss'
+import handleLoadingSidebar from './store/actions/porta/side-header/SideHeaderActions'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import Navbar from './components/porta/side-header/Navbar'
+import Home from './components/porta/side-header/Home'
+import Header from './components/porta/side-header/Header'
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <SideHeader/>
-        <Switch>
-          <Route path='/contact-me' component={ContactMe}/>
-          <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail}/>
-          <Route exact path='/portafolio' component={Portafolio}/>
-          <Route path='/work-experience' component={WorkExperience}/>
-          <Route path='/education' component={Education}/>
-        </Switch>
-      </BrowserRouter>
-    );
+const styles = {
+  '@media screen and (min-width: 1200px)': {
+    appContainer: {
+      display: 'grid',
+      gridTemplateColumns: '350px 1fr',
+      gridTemplateRows: 'repeat(2, 1fr)',
+      gridTemplateAreas: `
+                        'sidebar header'
+                        'sidebar content'
+                        `
+    },
+    sidebar: {
+      gridArea: 'sidebar'
+    },
+    header: {
+      gridArea: 'header'
+    },
+    content: {
+      gridArea: 'content'
+    }
   }
 }
 
-export default App;
+class App extends Component {
+  // This state is in charge of @Navbar and @Header loading
+  state = {
+    isFetching: false,
+    error: '',
+    sideHeaderData: undefined
+  }
+
+  componentDidMount() {
+    // Load data from Firebase
+    this.props.dispatch(handleLoadingSidebar())
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({
+        isFetching: this.props.isFetching,
+        error: this.props.error,
+        sideHeaderData: this.props.sideHeaderData
+      })
+    }
+  }
+
+  render() {
+    const { isFetching, sideHeaderData, error } = this.state
+    const { classes } = this.props
+
+    if (isFetching)
+      return (<div>LOADING...</div>)
+
+    if (error)
+      return (
+        <div>
+          THERE WAS AN ERROR !!!
+          <p>{error}</p>
+          {console.log('ERROR: ', error)}
+        </div>
+      )
+
+    if (sideHeaderData !== undefined) {
+      const { SideHeader, Buttons } = sideHeaderData
+      return (
+        <div className={classes.appContainer}>
+          <BrowserRouter>
+            <div>
+              <Navbar sideHeader={SideHeader} buttons={Buttons} className={classes.sidebar} />
+              <Header className={classes.header} />
+            </div>
+            <Switch>
+              <Route exact path='/' render={() => <Redirect to="/home" />} />
+              <Route path='/home' render={() => <Home sideHeader={SideHeader} buttons={Buttons} className={classes.content} />} />
+              <Route path='/contact-me' component={ContactMe} className={classes.content} />
+              <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} className={classes.content} />
+              <Route exact path='/portafolio' component={Portafolio} className={classes.content} />
+              <Route path='/work-experience' component={WorkExperience} className={classes.content} />
+              <Route path='/education' component={Education} className={classes.content} />
+            </Switch>
+          </BrowserRouter>
+        </div>
+      )
+    }
+
+    return null
+  }
+}
+
+const mapStateToProps = (state) => {
+  const { sideHeader } = state
+  const { isFetching, error, data } = sideHeader
+  return {
+    isFetching,
+    error,
+    sideHeaderData: data
+  }
+}
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps)
+)(App)
