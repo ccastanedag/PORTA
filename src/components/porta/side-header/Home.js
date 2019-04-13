@@ -7,7 +7,8 @@ import ButtonFactory from '../../shared/ButtonFactory'
 import withStyles from 'react-jss'
 import Particles from 'react-particles-js'
 import { particlesSettings, mapButtonsText } from '../../../utils/utils'
-
+import MediaQuery from 'react-responsive'
+const width = 768
 const styles = {
   homeContainer: {
     width: '100%',
@@ -63,6 +64,12 @@ const styles = {
       paddingBottom: '0'
     }
   },
+  '@media screen and (min-height: 641px) and (orientation: landscape)': {
+    homeContainer: {
+      height: '100vw',
+      paddingBottom: '0'
+    }
+  },
   '@media screen and (min-width: 768px)': {
     avatar: {
       padding: '2.5em 0'
@@ -82,10 +89,10 @@ export class Home extends Component {
     const { header, sidebar } = sideHeader 
     return (
       <div>
-        <div >
+        <MediaQuery minWidth={1200}>
           <p>This will be the Desktop Home</p>
-        </div>
-        <div >
+        </MediaQuery>
+        <MediaQuery maxWidth={1199}>
           <div className={classes.homeContainer} >
             <div className={classes.mobileHeader}>
               <MobileHeader ownerName={header.ownerName} />
@@ -118,8 +125,7 @@ export class Home extends Component {
               />
             </div>
           </div>
-        </div>
-        
+        </MediaQuery>
       </div>
     )
 

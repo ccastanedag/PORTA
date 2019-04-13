@@ -13,26 +13,30 @@ import { connect } from 'react-redux'
 import Navbar from './components/porta/side-header/Navbar'
 import Home from './components/porta/side-header/Home'
 import Header from './components/porta/side-header/Header'
+import MediaQuery from 'react-responsive'
 
 const styles = {
   '@media screen and (min-width: 1200px)': {
     appContainer: {
-      display: 'grid',
-      gridTemplateColumns: '350px 1fr',
-      gridTemplateRows: 'repeat(2, 1fr)',
-      gridTemplateAreas: `
-                        'sidebar header'
-                        'sidebar content'
-                        `
+      display:'flex'
     },
     sidebar: {
-      gridArea: 'sidebar'
+      flexBasis: '25%'
+    },
+    noSidebar: {
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      background: 'blue'
     },
     header: {
-      gridArea: 'header'
+      height: '18.5%',
+      minHeight: '18.5%',
+      background: 'green'
     },
     content: {
-      gridArea: 'content'
+      flex: '1',
+      background: 'yellow'
     }
   }
 }
@@ -79,23 +83,33 @@ class App extends Component {
     if (sideHeaderData !== undefined) {
       const { SideHeader, Buttons } = sideHeaderData
       return (
-        <div className={classes.appContainer}>
-          <BrowserRouter>
-            <div>
-              <Navbar sideHeader={SideHeader} buttons={Buttons} className={classes.sidebar} />
-              <Header className={classes.header} />
+        <BrowserRouter>
+          <div className={classes.appContainer}>
+            <div className={classes.sidebar}>
+              <MediaQuery minWidth={1200}>
+                <Navbar sideHeader={SideHeader} buttons={Buttons} className={classes.sidebar} />
+              </MediaQuery>
             </div>
-            <Switch>
-              <Route exact path='/' render={() => <Redirect to="/home" />} />
-              <Route path='/home' render={() => <Home sideHeader={SideHeader} buttons={Buttons} className={classes.content} />} />
-              <Route path='/contact-me' component={ContactMe} className={classes.content} />
-              <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} className={classes.content} />
-              <Route exact path='/portafolio' component={Portafolio} className={classes.content} />
-              <Route path='/work-experience' component={WorkExperience} className={classes.content} />
-              <Route path='/education' component={Education} className={classes.content} />
-            </Switch>
-          </BrowserRouter>
-        </div>
+            <div className={classes.noSidebar}>
+              <div className={classes.header}>
+                <MediaQuery minWidth={1200}>
+                  <Header className={classes.header} />
+                </MediaQuery>
+              </div>
+              <div className={classes.content}>
+                <Switch>
+                  <Route exact path='/' render={() => <Redirect to="/home" />} />
+                  <Route path='/home' render={() => <Home sideHeader={SideHeader} buttons={Buttons} />} />
+                  <Route path='/contact-me' component={ContactMe} />
+                  <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
+                  <Route exact path='/portafolio' component={Portafolio} />
+                  <Route path='/work-experience' component={WorkExperience} />
+                  <Route path='/education' component={Education} />
+                </Switch>
+              </div>
+            </div>
+          </div>
+        </BrowserRouter>
       )
     }
 

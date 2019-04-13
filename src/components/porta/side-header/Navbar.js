@@ -36,7 +36,7 @@ const styles = {
                       'profession'
                       'locationInfo'
                       'mobileButtons'`,
-    alignContent: 'center'
+    alignContent: 'start'
   },
   avatar: {
     gridArea: 'avatar',
@@ -64,17 +64,17 @@ const styles = {
       paddingBottom: '0'
     }
   },
-  '@media screen and (min-width: 768px)': {
-    avatar: {
-      padding: '2.5em 0'
-    },
-    profession: {
-      padding: '1.25em 0'
-    },
-    locationInfo: {
-      padding: '0 0 2.5em 0'
-    }
-  }
+  // '@media screen and (min-width: 768px)': {
+  //   avatar: {
+  //     padding: '2.5em 0'
+  //   },
+  //   profession: {
+  //     padding: '1.25em 0'
+  //   },
+  //   locationInfo: {
+  //     padding: '0 0 2.5em 0'
+  //   }
+  // }
 }
 
 export class Navbar extends Component {
