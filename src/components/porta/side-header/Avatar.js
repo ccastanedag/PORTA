@@ -37,6 +37,30 @@ const styles = {
       width: '11em',
       height: '11em',
     }
+  },
+  '@media screen and (min-width: 1200px)' : {
+    avatarContainer:{
+      paddingTop: '1.0em'
+    },
+    avatar: {
+      width: '6.5em'
+    },
+    shadow: {
+      width: '7.5em',
+      height: '7.5em',
+    }
+  },
+  '@media screen and (min-width: 1600px)' : {
+    avatarContainer:{
+      paddingTop: '2.5em'
+    },
+    avatar: {
+      width: '8.5em'
+    },
+    shadow: {
+      width: '9.5em',
+      height: '9.5em',
+    }
   }
 }
 

@@ -18,10 +18,10 @@ import MediaQuery from 'react-responsive'
 const styles = {
   '@media screen and (min-width: 1200px)': {
     appContainer: {
-      display:'flex'
+      display: 'flex'
     },
     sidebar: {
-      flexBasis: '25%'
+      flexBasis: '22%'
     },
     noSidebar: {
       flex: '1',
@@ -30,13 +30,19 @@ const styles = {
       background: 'blue'
     },
     header: {
-      height: '18.5%',
-      minHeight: '18.5%',
+      height: '15%',
+      minHeight: '15%',
       background: 'green'
     },
     content: {
       flex: '1',
       background: 'yellow'
+    }
+  },
+  '@media screen and (min-width: 1600px)': {
+    header : {
+      height: '13%',
+      minHeight: '13%'
     }
   }
 }

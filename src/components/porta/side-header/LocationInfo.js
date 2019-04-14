@@ -31,6 +31,26 @@ const styles = {
     text: {
       fontSize: '1.3125em'
     }
+  },
+  '@media screen and (min-width: 1200px)': {
+    title: {
+      fontSize: '1.05em'
+    },
+    text: {
+      fontSize: '0.95em'
+    }
+  },
+
+  '@media screen and (min-width: 1600px)': {
+    title: {
+      fontSize: '1.25em'
+    },
+    text: {
+      fontSize: '1.15em'
+    },
+    infoContainer: {
+      padding: '0.75em 0 0..5em 0'
+    }
   }
 }
 

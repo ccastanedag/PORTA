@@ -46,6 +46,28 @@ const styles = {
     icon: {
       fontSize: '1.5625em'
     }
+  },
+  '@media screen and (min-width: 1200px)' : {
+    button: {
+      fontSize: '1em',
+      padding: '0.35em 1.25em',
+      marginTop: '0.65em',
+      marginBottom: '0.65em'
+    },
+    icon: {
+      fontSize: '1.15em'
+    }
+  },
+  '@media screen and (min-width: 1600px)': {
+    button: {
+      fontSize: '1.2em',
+      padding: '0.5em 1.25em',
+      marginTop: '0.8em',
+      marginBottom: '0.8em'
+    },
+    icon: {
+      fontSize: '1.35em'
+    }
   }
 }
 
