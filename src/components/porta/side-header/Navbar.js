@@ -103,6 +103,7 @@ export class Navbar extends Component {
 
     const { classes, sideHeader, buttons } = this.props
     const { header, sidebar } = sideHeader
+    console.log(sideHeader)
     return (
       <div className={classes.sideHeaderContainer} >
         <div className={classes.content}>
@@ -128,7 +129,7 @@ export class Navbar extends Component {
             <NavButton fontAwesomeIcon='fas fa-graduation-cap' text='education' top={true} bottom={false} />
           </div>
           <div className={classes.currentlyDoing}>
-            <CurrentlyDoing></CurrentlyDoing>
+            <CurrentlyDoing currentActivity={sidebar.currentActivity}></CurrentlyDoing>
           </div>
           <Particles
             height='100%'

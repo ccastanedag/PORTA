@@ -36,16 +36,17 @@ const styles = {
 }
 
 const CurrentlyDoing = props => {
-  const { classes } = props
+  const { classes, currentActivity } = props
+  const { activityIconPath, activityName, activityTitle } = currentActivity
   return (
     <div className={classes.currentlyDoingContainer}>
-      <div className={classes.title}>Currently Learning</div>
+      <div className={classes.title}>{activityTitle}</div>
       <div className={classes.activity}>
         <div className={classes.iconActivity}>
-          <img width={24} src='https://i.imgur.com/CjsWu16.png' alt='activity logo' />
+          <img width={24} src={activityIconPath} alt='activity logo' />
         </div>
         <div className={classes.nameActivity}>
-          Adobe XD
+          {activityName}
         </div>
       </div>
     </div>
@@ -53,7 +54,7 @@ const CurrentlyDoing = props => {
 }
 
 CurrentlyDoing.propTypes = {
-
+   currentActivity : PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(CurrentlyDoing)
