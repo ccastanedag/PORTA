@@ -11,7 +11,7 @@ import handleLoadingSidebar from './store/actions/porta/side-header/SideHeaderAc
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Navbar from './components/porta/side-header/Navbar'
-import Home from './components/porta/side-header/Home'
+import Home from './components/porta/home/Home'
 import Header from './components/porta/side-header/Header'
 import MediaQuery from 'react-responsive'
 
@@ -26,17 +26,17 @@ const styles = {
     noSidebar: {
       flex: '1',
       display: 'flex',
-      flexDirection: 'column',
-      background: 'blue'
+      flexDirection: 'column'
     },
     header: {
       height: '15%',
-      minHeight: '15%',
-      background: 'green'
+      minHeight: '15%'
     },
     content: {
       flex: '1',
-      background: 'yellow'
+      display:'flex',
+      justifyContent: 'center',
+      aligntItems:'center'
     }
   },
   '@media screen and (min-width: 1600px)': {
