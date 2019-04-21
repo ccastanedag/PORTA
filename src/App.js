@@ -88,6 +88,7 @@ class App extends Component {
 
     if (sideHeaderData !== undefined) {
       const { SideHeader, Buttons } = sideHeaderData
+      const { header } = SideHeader
       return (
         <BrowserRouter>
           <div className={classes.appContainer}>
@@ -99,7 +100,7 @@ class App extends Component {
             <div className={classes.noSidebar}>
               <div className={classes.header}>
                 <MediaQuery minWidth={1200}>
-                  <Header className={classes.header} />
+                  <Header className={classes.header} header={header} Buttons={Buttons}/>
                 </MediaQuery>
               </div>
               <div className={classes.content}>

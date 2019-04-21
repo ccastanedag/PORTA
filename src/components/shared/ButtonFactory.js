@@ -52,7 +52,9 @@ const styles = {
       fontSize: '1em',
       padding: '0.35em 1.25em',
       marginTop: '0.65em',
-      marginBottom: '0.65em'
+      marginBottom: '0.65em',
+      marginRight: '0.75em',
+      marginLeft: '0.75em'
     },
     icon: {
       fontSize: '1.15em'
@@ -61,7 +63,7 @@ const styles = {
   '@media screen and (min-width: 1600px)': {
     button: {
       fontSize: '1.2em',
-      padding: '0.5em 1.25em',
+      padding: '0.35em 1.25em',
       marginTop: '0.8em',
       marginBottom: '0.8em'
     },

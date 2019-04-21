@@ -47,7 +47,8 @@ const styles = {
   },
   profession: {
     gridArea: 'profession',
-    padding: '0.75em 0'
+    padding: '0.75em 0',
+    textAlign: 'center'
   },
   locationInfo: {
     gridArea: 'locationInfo',
@@ -77,7 +78,7 @@ const styles = {
     fontFamily: 'Lato script=all rev=1',
     fontStyle: 'normal',
     fontWeight: '100',
-    fontSize: '1.65em',
+    fontSize: '1.35em',
     color: '#757892',
     textAlign: 'center'
   },
@@ -85,7 +86,7 @@ const styles = {
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
     fontWeight: '300',
-    fontSize: '1.8em',
+    fontSize: '1.65em',
     color: '#757892',
     textAlign: 'center',
   },
@@ -95,7 +96,7 @@ const styles = {
   },
   mySkills : {
     extend: 'welcomeMessage',
-    fontSize: '1.25em',
+    fontSize: '1.15em',
     textAlign:'left',
     marginBottom: '0.5em'
   },
@@ -123,6 +124,17 @@ const styles = {
     },
     locationInfo: {
       padding: '0 0 2.5em 0'
+    }
+  },
+  '@media screen and (min-width: 1600px)' : {
+    welcomeTitle: {
+      fontSize: '1.8em'
+    },
+    welcomeMessage: {
+      fontSize: '1.65em'
+    },
+    mySkills : {
+      fontSize: '1.25em'
     }
   }
 }
@@ -185,7 +197,7 @@ export class Home extends Component {
                   {
                     mySkills.map((skill) => {
                       return (
-                        <img src={skill} height='48' className={classes.skill}></img>
+                        <img key={skill} src={skill} height='48' className={classes.skill}></img>
                       )
                     })
                   }
