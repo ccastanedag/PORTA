@@ -95,4 +95,8 @@ export class MobileMenu extends Component {
   }
 }
 
+MobileMenu.propTypes={
+  handleToggleMenu: PropTypes.func.isRequired
+}
+
 export default withStyles(styles)(MobileMenu)

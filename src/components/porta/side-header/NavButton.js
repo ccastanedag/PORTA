@@ -51,7 +51,10 @@ const NavButton = props => {
 }
 
 NavButton.propTypes = {
-
+  fontAwesomeIcon: PropTypes.string.isRequired,
+  text:PropTypes.string.isRequired,
+  top:PropTypes.bool.isRequired,
+  bottom:PropTypes.bool.isRequired
 }
 
 export default withStyles(styles)(NavButton)

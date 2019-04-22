@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { mapButtonsText } from '../../../utils/utils'
+import { renderButtons } from '../../../utils/utils'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 
@@ -13,7 +13,7 @@ const styles = {
   infoContainer: {
     width: '90%',
     display: 'flex',
-    justifyContent:'center'
+    justifyContent: 'center'
   },
   titleContainer: {
     flex: '1',
@@ -35,10 +35,10 @@ const styles = {
   buttonsContainer: {
     flex: '1',
     display: 'flex',
-    justifyContent:'flex-end',
+    justifyContent: 'flex-end',
     alignItems: 'center'
   },
-  '@media screen and (min-width: 1600px)' : {
+  '@media screen and (min-width: 1600px)': {
     ownerName: {
       fontSize: '3em'
     },
@@ -54,12 +54,11 @@ export class Header extends Component {
       buttons: PropTypes.array.isRequired,
       ownerName: PropTypes.string.isRequired,
       profession: PropTypes.string.isRequired
-    }).isRequired,
-    Buttons: PropTypes.array.isRequired
+    }).isRequired    
   }
 
   render() {
-    const { header, classes, Buttons } = this.props
+    const { header, classes } = this.props
     const { ownerName, profession, buttons } = header
     return (
       <div className={classes.headerContainer}>
@@ -69,9 +68,7 @@ export class Header extends Component {
             <div className={classes.profession}>{profession}</div>
           </div>
           <div className={classes.buttonsContainer}>
-            { 
-              mapButtonsText(buttons, Buttons)
-            }
+            {renderButtons(buttons)}
           </div>
         </div>
       </div>

@@ -87,26 +87,26 @@ class App extends Component {
       )
 
     if (sideHeaderData !== undefined) {
-      const { SideHeader, Buttons } = sideHeaderData
+      const { SideHeader } = sideHeaderData
       const { header } = SideHeader
       return (
         <BrowserRouter>
           <div className={classes.appContainer}>
             <div className={classes.sidebar}>
               <MediaQuery minWidth={1200}>
-                <Navbar sideHeader={SideHeader} buttons={Buttons} className={classes.sidebar} />
+                <Navbar sideHeader={SideHeader} className={classes.sidebar} />
               </MediaQuery>
             </div>
             <div className={classes.noSidebar}>
               <div className={classes.header}>
                 <MediaQuery minWidth={1200}>
-                  <Header className={classes.header} header={header} Buttons={Buttons}/>
+                  <Header className={classes.header} header={header} />
                 </MediaQuery>
               </div>
               <div className={classes.content}>
                 <Switch>
                   <Route exact path='/' render={() => <Redirect to="/home" />} />
-                  <Route path='/home' render={() => <Home sideHeader={SideHeader} buttons={Buttons} />} />
+                  <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
                   <Route path='/contact-me' component={ContactMe} />
                   <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
                   <Route exact path='/portafolio' component={Portafolio} />

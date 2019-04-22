@@ -4,9 +4,10 @@ import LocationInfo from './LocationInfo'
 import ButtonFactory from '../../shared/ButtonFactory'
 import withStyles from 'react-jss'
 import Particles from 'react-particles-js'
-import { particlesSettings, mapButtonsText } from '../../../utils/utils'
+import { particlesSettings, renderButtons } from '../../../utils/utils'
 import NavButton from '../side-header/NavButton'
 import CurrentlyDoing from '../side-header/CurrentlyDoing'
+import PropTypes from 'prop-types'
 
 
 const styles = {
@@ -100,10 +101,9 @@ const styles = {
 export class Navbar extends Component {
 
   render() {
-
-    const { classes, sideHeader, buttons } = this.props
-    const { header, sidebar } = sideHeader
-    console.log(sideHeader)
+    const { classes, sideHeader } = this.props
+    const { sidebar } = sideHeader
+  
     return (
       <div className={classes.sideHeaderContainer} >
         <div className={classes.content}>
@@ -120,8 +120,10 @@ export class Navbar extends Component {
             <ButtonFactory
               buttonText='Contact Me'
               fontAwesomeIcon='fas fa-envelope'
+              redirectTo=''
+              linkTo='/contact-me'
               gradient={{ start: '#F83D83', end: '#E35D58' }} />
-            {mapButtonsText(sidebar.buttons, buttons)}
+            {renderButtons(sidebar.buttons)}
           </div>
           <div className={classes.navButtons}>
             <NavButton fontAwesomeIcon='fas fa-folder-open' text='portafolio' top={false} bottom={true} />
@@ -143,5 +145,8 @@ export class Navbar extends Component {
   }
 }
 
+Navbar.propTypes = {
+  sideHeader : PropTypes.object.isRequired
+}
 
 export default withStyles(styles)(Navbar)

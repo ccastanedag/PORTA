@@ -31,7 +31,6 @@ export default function handleLoadingHome() {
     db.collection('components').doc('Home').get()
       .then((snapshot)=>{
         dispatch(loadingHomeSuccess(snapshot.data()))
-        console.log('HERE',snapshot.data())
       })
       .catch((error) => dispatch(loadingHomeError(error)))
   }

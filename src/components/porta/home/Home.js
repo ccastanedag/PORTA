@@ -6,12 +6,13 @@ import LocationInfo from '../side-header/LocationInfo'
 import ButtonFactory from '../../shared/ButtonFactory'
 import withStyles from 'react-jss'
 import Particles from 'react-particles-js'
-import { particlesSettings, mapButtonsText } from '../../../utils/utils'
+import { particlesSettings, renderButtons } from '../../../utils/utils'
 import MediaQuery from 'react-responsive'
 import handleLoadingHome from '../../../store/actions/porta/home/HomeActions'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Separator from '../../shared/Separator'
+import PropTypes from 'prop-types'
 const styles = {
   homeContainer: {
     width: '100%',
@@ -90,17 +91,17 @@ const styles = {
     color: '#757892',
     textAlign: 'center',
   },
-  mySkillsContainer:{
-    display:'flex',
+  mySkillsContainer: {
+    display: 'flex',
     flexDirection: 'column'
   },
-  mySkills : {
+  mySkills: {
     extend: 'welcomeMessage',
     fontSize: '1.15em',
-    textAlign:'left',
+    textAlign: 'left',
     marginBottom: '0.5em'
   },
-  skill : {
+  skill: {
     marginRight: '0.5em'
   },
   '@media screen and (min-height: 641px)': {
@@ -126,14 +127,14 @@ const styles = {
       padding: '0 0 2.5em 0'
     }
   },
-  '@media screen and (min-width: 1600px)' : {
+  '@media screen and (min-width: 1600px)': {
     welcomeTitle: {
       fontSize: '1.8em'
     },
     welcomeMessage: {
       fontSize: '1.65em'
     },
-    mySkills : {
+    mySkills: {
       fontSize: '1.25em'
     }
   }
@@ -163,12 +164,12 @@ export class Home extends Component {
 
   render() {
     // Home Mobile-Tablet Logic
-    const { classes, sideHeader, buttons } = this.props
+    const { classes, sideHeader } = this.props
     const { header, sidebar } = sideHeader
 
     //Home Desktop Logic
     const { isFetching, homeData, error } = this.state
-    console.log('FETCHING', isFetching)
+    
     if (isFetching)
       return (<div>LOADING...</div>)
 
@@ -197,7 +198,7 @@ export class Home extends Component {
                   {
                     mySkills.map((skill) => {
                       return (
-                        <img key={skill} src={skill} height='48' className={classes.skill}></img>
+                        <img key={skill} src={skill} height='48' className={classes.skill} alt='Skill'></img>
                       )
                     })
                   }
@@ -229,8 +230,8 @@ export class Home extends Component {
                     buttonText='Contact Me'
                     fontAwesomeIcon='fas fa-envelope'
                     gradient={{ start: '#F83D83', end: '#E35D58' }} />
-                  {mapButtonsText(sidebar.buttons, buttons)}
-                  {mapButtonsText(header.buttons, buttons)}
+                  {renderButtons(sidebar.buttons)}
+                  {renderButtons(header.buttons)}
                 </div>
                 <Particles
                   height='100%'
@@ -245,6 +246,10 @@ export class Home extends Component {
     }
     return null
   }
+}
+
+Home.propTypes = {
+  sideHeader: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {

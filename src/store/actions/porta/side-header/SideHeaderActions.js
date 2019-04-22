@@ -28,20 +28,11 @@ function loadingSidebarSuccess(data) {
 export default function handleLoadingSidebar() {
   return (dispatch, getState) => {
     dispatch(loadingSidebar())
-    Promise.all([
-      db.collection('components').doc('SideHeader').get(),
-      db.collection('buttons').get()
-    ])
-      .then(([sideHeaderDoc, snapShotButtons]) => {
+    db.collection('components').doc('SideHeader').get()
+      .then((sideHeaderDoc) => {
         const SideHeader = sideHeaderDoc.data()
-        let Buttons = []
-        snapShotButtons.forEach((button)=>{
-          Buttons.push(button.data())
-        })
-        
         const result = {
-          SideHeader,
-          Buttons
+          SideHeader
         }
         dispatch(loadingSidebarSuccess(result))
       })

@@ -15,23 +15,24 @@ export const particlesSettings = {
   }
 }
 
-/*
-  buttonsText: are the text of buttons user added to header or sidebar
-  buttons: are all buttons create for the entire app (buttons collection - Firebase)
-   */
-export function mapButtonsText(buttonsText, buttons) {
-  const result = buttonsText.map((item) => {
-    const buttonDetail = getElementFromListByAttribute(buttons, 'buttonText', item)
-    if (buttonDetail) {
-      return (
-        <ButtonFactory key={item}
-          buttonText={buttonDetail.buttonText}
-          fontAwesomeIcon={buttonDetail.fontAwesomeIcon}
-          gradient={{ start: '#86A8E7', end: '#8989CB' }} />)
-    }
-    return null
+/** This function receive:
+ *  - Array of buttons (buttonText, fontAwesomeIcon, redirectTo)
+ *  and return:
+ *  - Each button rendered
+ */ 
+export function renderButtons(buttonsArray) {
+  const result = buttonsArray.map((button) => {
+    const { buttonText, fontAwesomeIcon, redirectTo } = button
+    return (
+      <ButtonFactory 
+        key={redirectTo} 
+        buttonText={buttonText}
+        fontAwesomeIcon={fontAwesomeIcon}
+        redirectTo={redirectTo}
+        gradient={{ start: '#86A8E7', end: '#8989CB' }}/>
+    )
   })
-  return result
+ return result 
 }
 
 /** This function search @id on @list using @attribute as comparison criteria */

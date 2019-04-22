@@ -2,6 +2,7 @@ import React from 'react'
 import withStyles from 'react-jss'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 const styles = {
   icon: {
@@ -47,7 +48,7 @@ const styles = {
       fontSize: '1.5625em'
     }
   },
-  '@media screen and (min-width: 1200px)' : {
+  '@media screen and (min-width: 1200px)': {
     button: {
       fontSize: '1em',
       padding: '0.35em 1.25em',
@@ -73,20 +74,34 @@ const styles = {
   }
 }
 
-const ButtonFactory = ({ classes, buttonText, fontAwesomeIcon }) => {
-  return (
-    <div>
-      <Button className={classes.button}>
-        <i className={`${fontAwesomeIcon} ${classes.icon}`}></i>
-        {buttonText}
-      </Button>
-    </div>
-  )
+const ButtonFactory = ({ classes, buttonText, fontAwesomeIcon, redirectTo, linkTo }) => {
+  if (linkTo) {
+    return (
+      <div>
+        <Link to={linkTo}>
+          <Button className={classes.button}>
+            <i className={`${fontAwesomeIcon} ${classes.icon}`}></i>
+            {buttonText}
+          </Button>
+        </Link>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <Button className={classes.button} href={redirectTo}>
+          <i className={`${fontAwesomeIcon} ${classes.icon}`}></i>
+          {buttonText}
+        </Button>
+      </div>
+    )
+  }
 }
 
 ButtonFactory.propTypes = {
   buttonText: PropTypes.string.isRequired,
   fontAwesomeIcon: PropTypes.string.isRequired,
+  redirectTo: PropTypes.string.isRequired,
   gradient: PropTypes.shape({
     start: PropTypes.string,
     end: PropTypes.string
