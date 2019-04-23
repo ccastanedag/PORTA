@@ -35,6 +35,15 @@ export function renderButtons(buttonsArray) {
  return result 
 }
 
+export function convertToSlug(Text)
+{
+    return Text
+        .toLowerCase()
+        .replace(/ /g,'-')
+        .replace(/[^\w-]+/g,'')
+        ;
+}
+
 /** This function search @id on @list using @attribute as comparison criteria */
 export function getElementFromListByAttribute(list, attribute, id) {
   let result = null

@@ -8,9 +8,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* #root, body, html {
-  min-height: auto;
-} */
+a {
+  text-decoration: none
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

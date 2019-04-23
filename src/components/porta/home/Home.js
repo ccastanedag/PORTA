@@ -169,7 +169,7 @@ export class Home extends Component {
 
     //Home Desktop Logic
     const { isFetching, homeData, error } = this.state
-    
+
     if (isFetching)
       return (<div>LOADING...</div>)
 
@@ -229,6 +229,8 @@ export class Home extends Component {
                   <ButtonFactory
                     buttonText='Contact Me'
                     fontAwesomeIcon='fas fa-envelope'
+                    redirectTo=''
+                    linkTo='/contact-me'
                     gradient={{ start: '#F83D83', end: '#E35D58' }} />
                   {renderButtons(sidebar.buttons)}
                   {renderButtons(header.buttons)}

@@ -34,6 +34,7 @@ export default function handleLoadingSidebar() {
         const result = {
           SideHeader
         }
+        console.log('INICIADO')
         dispatch(loadingSidebarSuccess(result))
       })
       .catch((error) => {

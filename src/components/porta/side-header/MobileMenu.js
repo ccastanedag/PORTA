@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import withStyles from 'react-jss'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { categories } from '../../../utils/categoriesContext'
+import { convertToSlug } from '../../../utils/utils'
 
 const styles = {
   mobileMenuContainer: {
@@ -45,8 +47,8 @@ const styles = {
     alignItems: 'center',
     marginLeft: '1.5em'
   },
-  '@media screen and (min-width: 768px)' : {
-    mobileMenuContainer : {
+  '@media screen and (min-width: 768px)': {
+    mobileMenuContainer: {
       height: '250px'
     }
   }
@@ -71,6 +73,7 @@ MobileMenuItem.propTypes = {
 }
 
 export class MobileMenu extends Component {
+
   static propTypes = {
     handleToggleMenu: PropTypes.func.isRequired
   }
@@ -78,16 +81,16 @@ export class MobileMenu extends Component {
     const { classes, handleToggleMenu } = this.props
     return (
       <div className={classes.mobileMenuContainer}>
-        <Link to='/home' className={classes.mobileMenuItemContainer} onClick={()=>handleToggleMenu(false)}>
+        <Link to='/home' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-home' text='Home' />
         </Link>
-        <Link to='/portafolio' className={classes.mobileMenuItemContainer} onClick={()=>handleToggleMenu(false)}>
+        <Link to={`/portafolio/${convertToSlug(categories[0])}`} className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-folder-open' text='Portafolio' />
         </Link>
-        <Link to='/work-experience' className={classes.mobileMenuItemContainer} onClick={()=>handleToggleMenu(false)}>
+        <Link to='/work-experience' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-briefcase' text='Work Experience' />
         </Link>
-        <Link to='/education' className={classes.mobileMenuItemContainer} onClick={()=>handleToggleMenu(false)}>
+        <Link to='/education' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-graduation-cap' text='Education' />
         </Link>
       </div>
@@ -95,7 +98,7 @@ export class MobileMenu extends Component {
   }
 }
 
-MobileMenu.propTypes={
+MobileMenu.propTypes = {
   handleToggleMenu: PropTypes.func.isRequired
 }
 
