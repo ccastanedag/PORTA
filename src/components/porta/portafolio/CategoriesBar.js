@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import { Link } from 'react-router-dom'
 import { convertToSlug } from '../../../utils/utils'
-import {categories, CategoriesContext} from '../../../utils/categoriesContext'
+import { categories, searchSlugIntoCategories } from '../../../utils/categoriesUtils'
 
 const style = {
   categoriesContainer: {
@@ -24,50 +24,58 @@ const style = {
     background: '#EAEFFB'
   },
   link: {
-    display:'block',
+    display: 'block',
     padding: '0.85em',
     color: '#757892',
-    '&:focus':{
+    '&:focus': {
       color: '#757892'
     },
-    '&:hover':{
+    '&:hover': {
       color: '#757892'
     },
-    '&:visited':{
+    '&:visited': {
       color: '#757892'
     },
-    '&:link':{
+    '&:link': {
       color: '#757892'
     },
-    '&:active':{
+    '&:active': {
       color: '#757892'
     }
   }
 }
 
 export class CategoriesBar extends Component {
-  static contextType = CategoriesContext
   render() {
-    const { classes } = this.props
-    // @selectedCategory is string and @selectCategory is a methods. See categoriesContext.js for more details
-    const {selectedCategory, selectCategory} = this.context
-    console.log('CATEGORIES BAR', selectedCategory)
-    return (
-      <div className={classes.categoriesContainer}>
-        {
-          categories.map((category) => {
-            return (
-              <div key={category} className={`${classes.category} ${selectedCategory === category ? classes.selected : null}`}>
-                <Link className={classes.link} onClick={selectCategory} id={category} to={`/portafolio/${convertToSlug(category)}`}>
-                  {category}
-                </Link>
-              </div>
-            )
-          })
-        }
-      </div>
-    )
+    const { classes, match } = this.props
+    const categoryId = match.params.categoryId
+    if (searchSlugIntoCategories(categoryId)) {
+      return (
+        <div className={classes.categoriesContainer}>
+          {
+            categories.map((category) => {
+              return (
+                <div key={category} className={`${classes.category} ${categoryId === convertToSlug(category) ? classes.selected : null}`}>
+                  <Link className={classes.link} id={category} to={`/portafolio/${convertToSlug(category)}`}>
+                    {category}
+                  </Link>
+                </div>
+              )
+            })
+          }
+        </div>
+      )
+    } else {
+      return (
+        <div>PAGE NOT FOUND !!!</div>
+      )
+    }
+
   }
+}
+
+CategoriesBar.propTypes = {
+  match: PropTypes.object.isRequired
 }
 
 export default withStyles(style)(CategoriesBar)

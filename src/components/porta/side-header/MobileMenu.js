@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import withStyles from 'react-jss'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { categories } from '../../../utils/categoriesContext'
+import { categories } from '../../../utils/categoriesUtils'
 import { convertToSlug } from '../../../utils/utils'
 
 const styles = {

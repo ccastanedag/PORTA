@@ -14,7 +14,7 @@ import Navbar from './components/porta/side-header/Navbar'
 import Home from './components/porta/home/Home'
 import Header from './components/porta/side-header/Header'
 import MediaQuery from 'react-responsive'
-import { categories, CategoriesContext } from './utils/categoriesContext'
+import { categories } from './utils/categoriesUtils'
 import { convertToSlug } from './utils/utils'
 
 const styles = {
@@ -99,36 +99,34 @@ class App extends Component {
     if (sideHeaderData !== undefined) {
       const { SideHeader } = sideHeaderData
       const { header } = SideHeader
-      const selectedCategorySlug = convertToSlug(this.state.selectedCategory)
       return (
         <BrowserRouter>
-          <CategoriesContext.Provider value={{ selectedCategory: this.state.selectedCategory, selectCategory: this.selectCategory }}>
-            <div className={classes.appContainer}>
-              <div className={classes.sidebar}>
+          <div className={classes.appContainer}>
+            <div className={classes.sidebar}>
+              <MediaQuery minWidth={1200}>
+                <Navbar sideHeader={SideHeader} className={classes.sidebar} />
+              </MediaQuery>
+            </div>
+            <div className={classes.noSidebar}>
+              <div className={classes.header}>
                 <MediaQuery minWidth={1200}>
-                  <Navbar sideHeader={SideHeader} className={classes.sidebar} />
+                  <Header className={classes.header} header={header} />
                 </MediaQuery>
               </div>
-              <div className={classes.noSidebar}>
-                <div className={classes.header}>
-                  <MediaQuery minWidth={1200}>
-                    <Header className={classes.header} header={header} />
-                  </MediaQuery>
-                </div>
-                <div className={classes.content}>
-                  <Switch>
-                    <Route exact path='/' render={() => <Redirect to="/home" />} />
-                    <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
-                    <Route path='/contact-me' component={ContactMe} />
-                    <Route path='/portafolio/:categoryId' component={Portafolio} />
-                    <Route exact path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
-                    <Route path='/work-experience' component={WorkExperience} />
-                    <Route path='/education' component={Education} />
-                  </Switch>
-                </div>
+              <div className={classes.content}>
+                <Switch>
+                  <Route exact path='/' render={() => <Redirect to="/home" />} />
+                  <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
+                  <Route path='/contact-me' component={ContactMe} />
+                  <Route exact path='/portafolio' render={() => <Redirect to={`/portafolio/${convertToSlug(categories[0])}`}/>} />
+                  <Route path='/portafolio/:categoryId' component={Portafolio} />
+                  <Route exact path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
+                  <Route path='/work-experience' component={WorkExperience} />
+                  <Route path='/education' component={Education} />
+                </Switch>
               </div>
             </div>
-          </CategoriesContext.Provider>
+          </div>
         </BrowserRouter>
       )
     }
