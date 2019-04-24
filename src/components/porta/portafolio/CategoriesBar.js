@@ -49,28 +49,22 @@ export class CategoriesBar extends Component {
   render() {
     const { classes, match } = this.props
     const categoryId = match.params.categoryId
-    if (searchSlugIntoCategories(categoryId)) {
-      return (
-        <div className={classes.categoriesContainer}>
-          {
-            categories.map((category) => {
-              return (
-                <div key={category} className={`${classes.category} ${categoryId === convertToSlug(category) ? classes.selected : null}`}>
-                  <Link className={classes.link} id={category} to={`/portafolio/${convertToSlug(category)}`}>
-                    {category}
-                  </Link>
-                </div>
-              )
-            })
-          }
-        </div>
-      )
-    } else {
-      return (
-        <div>PAGE NOT FOUND !!!</div>
-      )
-    }
 
+    return (
+      <div className={classes.categoriesContainer}>
+        {
+          categories.map((category) => {
+            return (
+              <div key={category} className={`${classes.category} ${categoryId === convertToSlug(category) ? classes.selected : null}`}>
+                <Link className={classes.link} id={category} to={`/portafolio/${convertToSlug(category)}`}>
+                  {category}
+                </Link>
+              </div>
+            )
+          })
+        }
+      </div>
+    )
   }
 }
 
