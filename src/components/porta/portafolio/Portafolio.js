@@ -5,6 +5,7 @@ import MediaQuery from 'react-responsive'
 import PageTitle from '../../shared/PageTitle'
 import PortafolioList from './PortafolioList'
 import { searchSlugIntoCategories } from '../../../utils/categoriesUtils'
+import Footer from '../../shared/Footer'
 
 export class Portafolio extends Component {
   render() {
@@ -20,6 +21,7 @@ export class Portafolio extends Component {
           <div style={{display:'flex', justifyContent:'center'}}>
             <PortafolioList match={match} />
           </div>
+          <Footer />
         </div>
       )
     } else {
