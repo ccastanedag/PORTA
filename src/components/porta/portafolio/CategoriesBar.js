@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import { Link } from 'react-router-dom'
 import { convertToSlug } from '../../../utils/utils'
-import { categories, searchSlugIntoCategories } from '../../../utils/categoriesUtils'
+import { categories } from '../../../utils/categoriesUtils'
 
 const style = {
   categoriesContainer: {

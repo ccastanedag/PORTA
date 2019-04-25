@@ -119,8 +119,8 @@ class App extends Component {
                   <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
                   <Route path='/contact-me' component={ContactMe} />
                   <Route exact path='/portafolio' render={() => <Redirect to={`/portafolio/${convertToSlug(categories[0])}`}/>} />
-                  <Route path='/portafolio/:categoryId' component={Portafolio} />
-                  <Route exact path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
+                  <Route exact path='/portafolio/:categoryId' component={Portafolio} />
+                  <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
                   <Route path='/work-experience' component={WorkExperience} />
                   <Route path='/education' component={Education} />
                 </Switch>

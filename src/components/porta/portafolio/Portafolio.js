@@ -9,8 +9,7 @@ import { searchSlugIntoCategories } from '../../../utils/categoriesUtils'
 export class Portafolio extends Component {
   render() {
     const { match } = this.props
-    if(searchSlugIntoCategories(match.params.categoryId))
-    {
+    if (searchSlugIntoCategories(match.params.categoryId)) {
       return (
         <div>
           <MediaQuery maxWidth={1199}>
@@ -18,7 +17,9 @@ export class Portafolio extends Component {
           </MediaQuery>
           <PageTitle fontAwesomeIcon='fas fa-folder-open' pageTitle='Portafolio' />
           <CategoriesBar match={match} />
-          <PortafolioList />
+          <div style={{display:'flex', justifyContent:'center'}}>
+            <PortafolioList match={match} />
+          </div>
         </div>
       )
     } else {

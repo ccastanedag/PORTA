@@ -20,9 +20,9 @@ const styles = {
     padding: '0.35em 1.25em',
     textTransform: 'capitalize',
     borderRadius: '2em',
-    marginTop: '0.6em',
-    marginBottom: '0.6em',
+    margin: '0.6em 0.25em',
     position: 'relative',
+    zIndex: '0',
     '&:after': {
       content: '""',
       position: 'absolute',
