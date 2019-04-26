@@ -7,9 +7,18 @@ const styles = {
     minHeight: '1px',
     width: props.width,
     background: '#86A8E7',
-    margin: '1.5em 0 1em 0',
+    margin: '0.5em 0',
     opacity: '0.5'
-  })
+  }),
+  '@media screen and (min-width: 1600px)':{
+    separator: props => ({
+      minHeight: '1px',
+      width: props.width,
+      background: '#86A8E7',
+      margin: '1.5em 0 1em 0',
+      opacity: '0.5'
+    })
+  }
 }
 const Separator = ({ classes }) => { 
 return (

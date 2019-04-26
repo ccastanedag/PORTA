@@ -6,8 +6,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     background: '#F4F7FD',
-    padding: '1em',
-    marginTop:'1em'
+    padding: '1em'
   },
   developedBy: {
     fontFamily: 'Lato script=all rev=1',

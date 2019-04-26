@@ -12,8 +12,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '90%',
-    paddingTop: '1.25em'
+    width: '90%'
   }
 }
 

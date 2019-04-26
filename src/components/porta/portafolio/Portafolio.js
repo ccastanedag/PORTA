@@ -18,7 +18,7 @@ export class Portafolio extends Component {
           </MediaQuery>
           <PageTitle fontAwesomeIcon='fas fa-folder-open' pageTitle='Portafolio' />
           <CategoriesBar match={match} />
-          <div style={{display:'flex', justifyContent:'center'}}>
+          <div style={{display:'flex', justifyContent:'center', padding:'1em 0'}}>
             <PortafolioList match={match} />
           </div>
           <Footer />
