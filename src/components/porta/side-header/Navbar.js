@@ -31,7 +31,7 @@ const styles = {
       gridArea: 'sidebar',
       display: 'grid',
       gridTemplateColumns: '1fr',
-      gridTemplateRows: 'repeat(2, fit-content(1em)) 1fr 1fr',
+      gridTemplateRows: 'repeat(2, fit-content(1em)) fit-content(1em) 1fr',
       gridTemplateAreas: `
                         'avatar'
                         'locationInfo'
@@ -69,7 +69,7 @@ const styles = {
       gridArea: 'sidebar',
       display: 'grid',
       gridTemplateColumns: '1fr',
-      gridTemplateRows: 'repeat(4, fit-content(1em)) 150px',
+      gridTemplateRows: 'repeat(4, fit-content(1em)) 1fr',
       gridTemplateAreas: `
                         'avatar'
                         'locationInfo'
@@ -126,7 +126,8 @@ export class Navbar extends Component {
             {renderButtons(sidebar.buttons)}
           </div>
           <div className={classes.navButtons}>
-            <NavButton fontAwesomeIcon='fas fa-folder-open' text='portafolio' top={false} bottom={true} />
+            <NavButton fontAwesomeIcon='fas fa-home' text='home' top={false} bottom={true} />
+            <NavButton fontAwesomeIcon='fas fa-folder-open' text='portafolio' top={true} bottom={true} />
             <NavButton fontAwesomeIcon='fas fa-briefcase' text='work experience' top={true} bottom={true} />
             <NavButton fontAwesomeIcon='fas fa-graduation-cap' text='education' top={true} bottom={false} />
           </div>

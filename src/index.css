@@ -17,8 +17,8 @@ code {
     monospace;
 }
 
-@media screen and (min-width:1200px) {
+/* @media screen and (min-width:1200px) {
   body {
     overflow-y: hidden;
   }
-}
+} */
