@@ -57,6 +57,7 @@ const styles = {
   },
   buttonsContainer: {
     display: 'flex',
+    flexWrap:'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     padding: '0.5em  0'
@@ -131,6 +132,58 @@ const styles = {
     },
     padding: '0.25em 0 0.25em 0.5em',
     listStyleType: 'none'
+  },
+  '@media screen and (min-width: 768px)': {
+    projectName: {
+      fontSize: '1.65em'
+    },
+    developmentTime: {
+      fontSize: '1.25em'
+    },
+    longDescription: {
+      fontSize: '0.9em',
+    },
+    title: {
+      fontSize: '1.25em'
+    },
+    responsability: {
+      fontSize: '0.9em'
+    },
+    other: {
+      fontSize: '0.9em',
+      padding: '0.3em 0 0.3em 0.55em',
+    }
+  },
+  '@media screen and (min-width: 1200px)': {
+    projectDetailContainer: {
+      width: '80%',
+      flex: 'initial'
+    },
+    projectInfoContainer: {
+      width: '80%'
+    },
+    longDescription: {
+      fontSize: '1em',
+    },
+    responsability: {
+      fontSize: '1em'
+    },
+    other: {
+      fontSize: '1em',
+      padding: '0.3em 0 0.3em 0.55em',
+    },
+    section: {
+      '&:first-child': {
+        '&:hover': {
+          fontWeight: '600'
+        }
+      }
+    },
+    portafolioDetail:{
+      display:'flex',
+      flexDirection:'column',
+      alignItems:'center'
+    }
   }
 }
 
@@ -187,84 +240,88 @@ export class PortafolioDetail extends Component {
           responsabilities,
           othersUsed } = projects[0]
         return (
-          <div className={classes.projectDetailContainer}>
-            <MediaQuery maxWidth={1199}>
-              <MobileHeader ownerName='Carlos Castañeda' />
-            </MediaQuery>
-            <div className={classes.navBarContainer}>
-              <Link to={`/portafolio/`} className={classes.portafolio}>
-                <i className={`fas fa-folder-open ${classes.icon}`}></i>
-                <div>Portafolio</div>
-              </Link>
-              <Link to={`/portafolio/${categoryId}`} className={classes.section}>{convertSlugToTitle(categoryId)}</Link>
-              <div className={classes.section}>{convertSlugToTitle(projectId)}</div>
-            </div>
-            <div className={classes.projectInfoContainer}>
-              <Carousel
-                showThumbs={false}
-                dynamicHeight={true}
-                swipeScrollTolerance={0}>
-                {
-                  projectImages.map((image) => {
-                    return (
-                      <div>
-                        <img src={image} />
-                      </div>
-                    )
-                  })
-                }
-              </Carousel>
-              <div className={classes.buttonsContainer}>
-                {
-                  buttons.map((button) => {
-                    return (
-                      <ButtonFactory
-                        buttonText={button.buttonText}
-                        fontAwesomeIcon={button.fontAwesomeIcon}
-                        redirectTo={button.redirectTo}
-                        gradient={{ start: '#8989CB', end: '#86A8E7' }} />
-                    )
-                  })
-                }
+          <div className={classes.portafolioDetail}>
+            <div className={classes.projectDetailContainer}>
+              <MediaQuery maxWidth={1199}>
+                <MobileHeader ownerName='Carlos Castañeda' />
+              </MediaQuery>
+              <div className={classes.navBarContainer}>
+                <MediaQuery maxWidth={1199}>
+                  <Link to={`/portafolio/`} className={classes.portafolio}>
+                    <i className={`fas fa-folder-open ${classes.icon}`}></i>
+                    <div>Portafolio</div>
+                  </Link>
+                </MediaQuery>
+                <Link to={`/portafolio/${categoryId}`} className={classes.section}>{convertSlugToTitle(categoryId)}</Link>
+                <div className={classes.section}>{convertSlugToTitle(projectId)}</div>
               </div>
-            </div>
-            <div className={classes.technologiesContainer}>
-              <div className={classes.techs}>Main Technologies:</div>
-              <Separator width='100%' />
-              <div className={classes.tagContainer}>
-                {
-                  technologies.map((technology) => {
-                    const techTag = getElementFromListByAttribute(technologiesFb, 'technologyName', technology)
-                    return (
-                      <Tag tagLogo={techTag.technologyLogo} tagText={techTag.technologyName} />
-                    )
-                  })
-                }
+              <div className={classes.projectInfoContainer}>
+                <Carousel
+                  showThumbs={false}
+                  dynamicHeight={true}
+                  swipeScrollTolerance={0}>
+                  {
+                    projectImages.map((image) => {
+                      return (
+                        <div>
+                          <img src={image} />
+                        </div>
+                      )
+                    })
+                  }
+                </Carousel>
+                <div className={classes.buttonsContainer}>
+                  {
+                    buttons.map((button) => {
+                      return (
+                        <ButtonFactory
+                          buttonText={button.buttonText}
+                          fontAwesomeIcon={button.fontAwesomeIcon}
+                          redirectTo={button.redirectTo}
+                          gradient={{ start: '#8989CB', end: '#86A8E7' }} />
+                      )
+                    })
+                  }
+                </div>
               </div>
-              <Separator width='100%' />
-              <div className={classes.projectName}>{projectName}</div>
-              <div className={classes.developmentTime}>Development Time: {developmentTime}</div>
-              <div className={classes.longDescription}>{longDescription}</div>
-              <div className={classes.title}>Responsabilities:</div>
-              <ul className={classes.responsabilityList}>
-                {
-                  responsabilities.map((responsability) => {
-                    return (
-                      <li className={classes.responsability}>{responsability}</li>
-                    )
-                  })
-                }
-              </ul>
-              <div className={classes.title}>Other technologies, libraries and concepts used:</div>
-              <ul className={classes.otherList}>
-                {
-                  othersUsed.map((other) => {
-                    return (
-                      <li className={classes.other}>+  {other}</li>
-                    )
-                  })
-                }
-              </ul>
+              <div className={classes.technologiesContainer}>
+                <div className={classes.techs}>Main Technologies:</div>
+                <Separator width='100%' />
+                <div className={classes.tagContainer}>
+                  {
+                    technologies.map((technology) => {
+                      const techTag = getElementFromListByAttribute(technologiesFb, 'technologyName', technology)
+                      return (
+                        <Tag tagLogo={techTag.technologyLogo} tagText={techTag.technologyName} />
+                      )
+                    })
+                  }
+                </div>
+                <Separator width='100%' />
+                <div className={classes.projectName}>{projectName}</div>
+                <div className={classes.developmentTime}>Development Time: {developmentTime}</div>
+                <div className={classes.longDescription}>{longDescription}</div>
+                <div className={classes.title}>Responsabilities:</div>
+                <ul className={classes.responsabilityList}>
+                  {
+                    responsabilities.map((responsability) => {
+                      return (
+                        <li className={classes.responsability}>{responsability}</li>
+                      )
+                    })
+                  }
+                </ul>
+                <div className={classes.title}>Other technologies, libraries and concepts used:</div>
+                <ul className={classes.otherList}>
+                  {
+                    othersUsed.map((other) => {
+                      return (
+                        <li className={classes.other}>+  {other}</li>
+                      )
+                    })
+                  }
+                </ul>
+              </div>
             </div>
             <Footer />
           </div>
