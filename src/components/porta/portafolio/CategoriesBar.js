@@ -31,7 +31,8 @@ const style = {
       color: '#757892'
     },
     '&:hover': {
-      color: '#757892'
+      color: '#757892',
+      fontWeight: '600'
     },
     '&:visited': {
       color: '#757892'
@@ -41,6 +42,11 @@ const style = {
     },
     '&:active': {
       color: '#757892'
+    }
+  },
+  '@media screen and (min-width: 1200px)':{
+    selected: {
+      fontWeight:'600'
     }
   }
 }

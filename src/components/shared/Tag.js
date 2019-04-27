@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core';
 const styles = {
   tagContainer: {
-    borderRadius: '2px',
+    borderRadius: '3px',
     background: '#EAEDF5',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '0.25em 0.3em',
+    padding: '0.25em 0.45em',
     margin: '0.2em',
     flexBasis: 'auto'
   },
@@ -22,6 +22,19 @@ const styles = {
     fontSize:'0.7em',
     color: '#757892',
     paddingLeft: '0.25em'
+  },
+  '@media screen and (min-width: 768px) and (max-width: 1199px)':{
+    tagContainer:{
+      padding: '0.4em 0.9em',
+      margin: '0.25em',
+      borderRadius: '5px'
+    },
+    tagLogo: {
+      width: '14px'
+    },
+    tagText : {
+      fontSize: '0.8em'
+    }
   }
 }
 const Tag = ({ classes, tagLogo, tagText }) => {

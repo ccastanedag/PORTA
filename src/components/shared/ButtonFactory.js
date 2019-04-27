@@ -40,12 +40,12 @@ const styles = {
   '@media screen and (min-width: 768px)': {
     button: {
       fontSize: '1.25em',
-      padding: '0.5em 1.5em',
+      padding: '0.3em 1em',
       marginTop: '0.8em',
       marginBottom: '0.8em'
     },
     icon: {
-      fontSize: '1.5625em'
+      fontSize: '1.35em'
     }
   },
   '@media screen and (min-width: 1200px)': {

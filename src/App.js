@@ -28,23 +28,25 @@ const styles = {
     noSidebar: {
       flex: '1',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      maxHeight: '100vh'
     },
     header: {
-      height: '15%',
-      minHeight: '15%'
+      height: '120px',
+      minHeight: '120px'
     },
     content: {
-      flex: '1',
+      flex:'1',
       display: 'flex',
       justifyContent: 'center',
-      aligntItems: 'center'
+      aligntItems: 'center',
+      overflowY:'scroll'
     }
   },
   '@media screen and (min-width: 1600px)': {
     header: {
-      height: '13%',
-      minHeight: '13%'
+      height: '150px',
+      minHeight: '150px'
     }
   }
 }

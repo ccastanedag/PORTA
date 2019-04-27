@@ -32,7 +32,7 @@ export default function handleLoadingPortafolioList(categoryId) {
   return (dispatch, getState) => {
     dispatch(loadingPortafolioList())
     Promise.all([
-      projectsRef.where('category', '==', categoryId).get(),
+      projectsRef.where('category', '==', categoryId).orderBy('order','asc').get(),
       technologiesRef.get()
     ])
       .then(([projectsSnapshot, technologiesSnapshot]) => {

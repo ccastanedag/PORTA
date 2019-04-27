@@ -15,7 +15,8 @@ const styles = {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: '0.35em',
+    padding: '0.35em',
+    margin: '0.5em 0',
     border: '3px solid #F8F8F8'
   },
   projectImage: {
@@ -35,15 +36,7 @@ const styles = {
     fontFamily: 'Montserrat',
     fontSize: '1.25em',
     color: '#757892',
-    marginBottom: '0.5em'
-  },
-  developmentTime: {
-    fontFamily: 'Lato script=all rev=1',
-    fontWeight: '300',
-    fontStyle: 'normal',
-    fontSize: '1em',
-    color: '#757892',
-    marginBottom: '0.5em'
+    marginBottom: '0.35em'
   },
   shortDescription: {
     fontFamily: 'Lato script=all rev=1',
@@ -64,7 +57,23 @@ const styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'relative'
+    
+  },
+  '@media screen and (min-width: 768px)': {
+    projectSummaryContainer:{
+      paddingTop: '1em'
+    },
+    projectName:{
+      fontSize:'1.5em'
+    },
+    shortDescription:{
+      fontSize:'1em'
+    }
+  },
+  '@media screen and (min-width: 1200px)' : {
+    projectSummaryContainer : {
+      margin: '0em 0.5em'
+    } 
   }
 }
 
@@ -76,7 +85,6 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
       <img className={classes.projectImage} src={`${projectImages[0]}`} alt={`Project ${projectName}`} />
       <div className={classes.projectInfoContainer}>
         <div className={classes.projectName}>{projectName}</div>
-        <div className={classes.developmentTime}>Development Time: {developmentTime}</div>
         <div className={classes.shortDescription}>{shortDescription}</div>
         <div className={classes.technologiesContainer}>
           {

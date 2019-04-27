@@ -18,6 +18,14 @@ const style = {
     fontSize:'1em',
     color:'#757892',
     marginLeft:'0.35em'
+  },
+  '@media screen and (min-width: 1200px)': {
+    icon: {
+      fontSize:'1.5em'
+    },
+    pageTitle: {
+      fontSize:'1.5em'
+    }
   }
 }
 

@@ -26,6 +26,12 @@ const styles = {
     fontSize: '0.7em',
     marginRight: '0.65em',
     color: '#757892'
+  },
+  '@media screen and (min-width:1200px)':{
+    footerContainer: {
+      alignSelf:'stretch',
+      alignItems: 'center'
+    }
   }
 }
 const Footer = ({ classes }) => {

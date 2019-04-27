@@ -13,6 +13,12 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     width: '90%'
+  },
+  '@media screen and (min-width:1200px)': {
+    portafolioListContainer: {
+      flexDirection: 'row',
+      flex:'1'
+    }
   }
 }
 
@@ -35,7 +41,7 @@ export class PortafolioList extends Component {
         portafolioListData: this.props.portafolioListData
       })
     }
-    if(this.props.match.params.categoryId !== prevProps.match.params.categoryId){
+    if (this.props.match.params.categoryId !== prevProps.match.params.categoryId) {
       const categoryId = convertSlugToTitle(this.props.match.params.categoryId)
       this.props.dispatch(handleLoadingPortafolioList(categoryId))
     }
@@ -67,9 +73,9 @@ export class PortafolioList extends Component {
         <div className={classes.portafolioListContainer}>
           {portafolioListData.projects.map((project) => {
             return (
-              <ProjectSummary 
+              <ProjectSummary
                 key={project.projectName}
-                projectSummary={project} 
+                projectSummary={project}
                 technologiesFb={portafolioListData.technologies}
                 match={this.props.match} />
             )
