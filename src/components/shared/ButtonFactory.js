@@ -73,7 +73,10 @@ const styles = {
     }
   }
 }
-
+/**
+ *  @redirectTo are links outside of the application. Ex: https://youtube.com
+ *  @linkTo are links inside of the application. Ex: /portafolio/game-development
+ */
 const ButtonFactory = ({ classes, buttonText, fontAwesomeIcon, redirectTo, linkTo }) => {
   if (linkTo) {
     return (
@@ -89,7 +92,7 @@ const ButtonFactory = ({ classes, buttonText, fontAwesomeIcon, redirectTo, linkT
   } else {
     return (
       <div>
-        <Button className={classes.button} href={redirectTo}>
+        <Button className={classes.button} target='_blank' href={redirectTo}>
           <i className={`${fontAwesomeIcon} ${classes.icon}`}></i>
           {buttonText}
         </Button>
