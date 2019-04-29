@@ -5,6 +5,7 @@ import { getElementFromListByAttribute } from '../../../utils/utils'
 import Tag from '../../shared/Tag'
 import ButtonFactory from '../../shared/ButtonFactory'
 import { convertToSlug } from '../../../utils/utils'
+import { Link } from 'react-router-dom'
 
 const styles = {
   projectSummaryContainer: {
@@ -57,23 +58,23 @@ const styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    
+
   },
   '@media screen and (min-width: 768px)': {
-    projectSummaryContainer:{
+    projectSummaryContainer: {
       paddingTop: '1em'
     },
-    projectName:{
-      fontSize:'1.5em'
+    projectName: {
+      fontSize: '1.5em'
     },
-    shortDescription:{
-      fontSize:'1em'
+    shortDescription: {
+      fontSize: '1em'
     }
   },
-  '@media screen and (min-width: 1200px)' : {
-    projectSummaryContainer : {
+  '@media screen and (min-width: 1200px)': {
+    projectSummaryContainer: {
       margin: '0em 0.5em'
-    } 
+    }
   }
 }
 
@@ -82,10 +83,14 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
   const { projectImages, projectName, developmentTime, shortDescription, technologies, buttons } = projectSummary
   return (
     <div className={classes.projectSummaryContainer}>
-      <img className={classes.projectImage} src={`${projectImages[0]}`} alt={`Project ${projectName}`} />
+      <Link to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
+        <img className={classes.projectImage} src={`${projectImages[0]}`} alt={`Project ${projectName}`} />
+      </Link>
       <div className={classes.projectInfoContainer}>
-        <div className={classes.projectName}>{projectName}</div>
-        <div className={classes.shortDescription}>{shortDescription}</div>
+        <Link to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
+          <div className={classes.projectName}>{projectName}</div>
+          <div className={classes.shortDescription}>{shortDescription}</div>
+        </Link>
         <div className={classes.technologiesContainer}>
           {
             technologies.map((technology) => {
@@ -94,13 +99,13 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
                 <Tag key={tag.technologyName} tagLogo={tag.technologyLogo} tagText={tag.technologyName} />
               )
             })
-          } 
+          }
         </div>
         <div className={classes.buttonsContainer}>
           {
             buttons.map((button) => {
               return (
-                <ButtonFactory 
+                <ButtonFactory
                   key={button.buttonText}
                   style={{ flexBasis: 'auto' }}
                   buttonText={button.buttonText}
