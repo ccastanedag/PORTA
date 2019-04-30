@@ -97,7 +97,8 @@ const styles = {
     fontStyle: 'normal',
     fontSize: '0.8em',
     color: '#757892',
-    marginBottom: '0.75em'
+    marginBottom: '0.75em',
+    lineHeight: '1.6'
   },
   title: {
     fontFamily: 'Lato script=all rev=1',
@@ -116,7 +117,8 @@ const styles = {
     fontStyle: 'normal',
     fontSize: '0.8em',
     color: '#757892',
-    marginBottom: '0.5em'
+    marginBottom: '0.5em',
+    lineHeight:'1.6'
   },
   otherList: {
     padding: '0'
@@ -130,7 +132,7 @@ const styles = {
     '&:nth-child(2n+1)': {
       background: '#F4F7FD'
     },
-    padding: '0.25em 0 0.25em 0.5em',
+    padding: '0.3em 0 0.3em 0.5em',
     listStyleType: 'none'
   },
   '@media screen and (min-width: 768px)': {
