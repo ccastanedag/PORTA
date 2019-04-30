@@ -88,7 +88,7 @@ const WorkExperienceDetails = ({ classes, workExperienceData }) => {
         {
           responsabilities.map((responsability) => {
             return (
-              <li className={classes.responsability}>{responsability}</li>
+              <li key={responsability} className={classes.responsability}>{responsability}</li>
             )
           })
         }

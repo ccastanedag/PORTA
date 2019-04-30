@@ -60,7 +60,7 @@ export class WorkExperience extends Component {
         </div>
       )
 
-    if (workExperienceData != undefined) {
+    if (workExperienceData !== undefined) {
       return (
         <div className={classes.workExperienceContainer}>
           <MediaQuery maxWidth={1199}>
@@ -71,7 +71,7 @@ export class WorkExperience extends Component {
             {
               workExperienceData.map((job)=>{
                 return (
-                  <WorkExperienceDetails workExperienceData={job}/>
+                  <WorkExperienceDetails key={job.companyName} workExperienceData={job}/>
                 )
               })
               }
