@@ -86,7 +86,7 @@ const styles = {
 
 
 const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
-  const { projectImages, projectName, developmentTime, shortDescription, technologies, buttons } = projectSummary
+  const { projectImages, projectName, shortDescription, technologies, buttons } = projectSummary
   return (
     <div className={classes.projectSummaryContainer}>
       <Link className={classes.linkImage} to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>

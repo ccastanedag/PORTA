@@ -40,7 +40,7 @@ const Footer = ({ classes }) => {
       <div className={classes.developedBy}>Developed by Carlos Castañeda</div>
       <div className={classes.madeWithContainer}>
         <div className={classes.madeWith}>Made with React</div>
-        <img height={24} src='https://i.imgur.com/XYvTK0w.png' />
+        <img height={24} src='https://i.imgur.com/XYvTK0w.png' alt='react logo' />
       </div>
 
     </div>
