@@ -26,6 +26,11 @@ const styles = {
     alignSelf: 'center',
     objectFit: 'contain'
   },
+  linkImage:{
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center'
+  },
   projectInfoContainer: {
     alignSelf: 'center',
     display: 'flex',
@@ -45,7 +50,8 @@ const styles = {
     fontStyle: 'normal',
     fontSize: '0.8em',
     color: '#757892',
-    marginBottom: '0.5em'
+    marginBottom: '0.5em',
+    lineHeight: '1.6'
   },
   technologiesContainer: {
     display: 'flex',
@@ -83,7 +89,7 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
   const { projectImages, projectName, developmentTime, shortDescription, technologies, buttons } = projectSummary
   return (
     <div className={classes.projectSummaryContainer}>
-      <Link to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
+      <Link className={classes.linkImage} to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
         <img className={classes.projectImage} src={`${projectImages[0]}`} alt={`Project ${projectName}`} />
       </Link>
       <div className={classes.projectInfoContainer}>
