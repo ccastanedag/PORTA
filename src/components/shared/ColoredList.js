@@ -21,7 +21,7 @@ const styles = {
     fontStyle: 'normal',
     fontSize: '0.7em',
     color: '#757892',
-    padding:'0.25em 0.45em',
+    padding:'0.3em 0.5em',
     margin: '0.2em',
     borderRadius:'3px',
     background:'#EAEDF5',
@@ -30,13 +30,15 @@ const styles = {
   '@media screen and (min-width:768px)': {
     item: {
       fontSize: '0.8em',
-      padding: '0.4em 0.9em',
+      padding: '0.45em 0.95em',
       borderRadius:'5px'
     }
   },
   '@media screen and (min-width:1200px)': {
     item: {
-      fontSize: '0.8em' 
+      fontSize: '0.8em',
+      padding: '0.35em 0.65em',
+      borderRadius:'3px'
     }
   }
 }
