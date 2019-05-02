@@ -11,30 +11,32 @@ const styles = {
     margin: '0',
     listStyleType: 'none',
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent:'center'
   },
   item: {
     flexBasis:'auto',
     fontFamily: 'Lato script=all rev=1',
     fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '0.8em',
+    fontSize: '0.7em',
     color: '#757892',
-    lineHeight: '1.6',
-    padding: '0.2em 0 0.2em 2em',
-    '&:nth-child(2n+1)': {
-      background: '#F4F7FD'
-    }
+    padding:'0.25em 0.45em',
+    margin: '0.2em',
+    borderRadius:'3px',
+    background:'#EAEDF5',
+    textAlign: 'center'
   },
   '@media screen and (min-width:768px)': {
     item: {
-      fontSize: '0.9em',
-      padding: '0.2em 0 0.2em 1.85em'
+      fontSize: '0.8em',
+      padding: '0.4em 0.9em',
+      borderRadius:'5px'
     }
   },
   '@media screen and (min-width:1200px)': {
     item: {
-      fontSize: '1em' 
+      fontSize: '0.8em' 
     }
   }
 }
