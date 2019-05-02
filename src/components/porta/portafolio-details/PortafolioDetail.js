@@ -14,6 +14,11 @@ import { getElementFromListByAttribute } from '../../../utils/utils'
 import Tag from '../../shared/Tag'
 import Footer from '../../shared/Footer'
 import { Link } from 'react-router-dom'
+import Title from '../../shared/Title'
+import SubTitle from '../../shared/SubTitle'
+import Paragraph from '../../shared/Paragraph'
+import SimpleList from '../../shared/SimpleList'
+import ColoredList from '../../shared/ColoredList'
 
 const styles = {
   projectDetailContainer: {
@@ -300,29 +305,13 @@ export class PortafolioDetail extends Component {
                   }
                 </div>
                 <Separator width='100%' />
-                <div className={classes.projectName}>{projectName}</div>
-                <div className={classes.developmentTime}>Development Time: {developmentTime}</div>
-                <div className={classes.longDescription}>{longDescription}</div>
-                <div className={classes.title}>Responsabilities:</div>
-                <ul className={classes.responsabilityList}>
-                  {
-                    responsabilities.map((responsability) => {
-                      return (
-                        <li className={classes.responsability}>{responsability}</li>
-                      )
-                    })
-                  }
-                </ul>
-                <div className={classes.title}>Other technologies, libraries and concepts used:</div>
-                <ul className={classes.otherList}>
-                  {
-                    othersUsed.map((other) => {
-                      return (
-                        <li className={classes.other}>+  {other}</li>
-                      )
-                    })
-                  }
-                </ul>
+                <Title titleText={projectName}/>
+                <SubTitle subTitleText={`Development Time: ${developmentTime}`}/>
+                <Paragraph paragraphText={longDescription}/>
+                <SubTitle subTitleText='Responsabilities:'/>
+                <SimpleList items={responsabilities}/>
+                <SubTitle subTitleText='Other libraries and concepts used:'/>
+                <ColoredList items={othersUsed}/>
               </div>
             </div>
             <Footer />
