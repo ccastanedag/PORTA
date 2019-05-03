@@ -6,7 +6,7 @@ import PageTitle from '../../shared/PageTitle'
 import PortafolioList from './PortafolioList'
 import { searchSlugIntoCategories } from '../../../utils/categoriesUtils'
 import Footer from '../../shared/Footer'
-import { withStyles } from '@material-ui/core'
+import withStyles from 'react-jss'
 
 const styles = {
   portafolioListContainer: {

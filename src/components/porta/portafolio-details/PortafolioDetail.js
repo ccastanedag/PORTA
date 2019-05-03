@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MediaQuery from 'react-responsive'
 import MobileHeader from '../side-header/MobileHeader'
-import { withStyles } from '@material-ui/core'
+import withStyles from 'react-jss'
 import { convertSlugToTitle } from '../../../utils/categoriesUtils'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'

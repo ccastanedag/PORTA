@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core'
+import withStyles from 'react-jss'
 import { getElementFromListByAttribute } from '../../../utils/utils'
 import Tag from '../../shared/Tag'
 import ButtonFactory from '../../shared/ButtonFactory'
