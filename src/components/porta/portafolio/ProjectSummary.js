@@ -6,6 +6,8 @@ import Tag from '../../shared/Tag'
 import ButtonFactory from '../../shared/ButtonFactory'
 import { convertToSlug } from '../../../utils/utils'
 import { Link } from 'react-router-dom'
+import Title from '../../shared/Title'
+import Paragraph from '../..//shared/Paragraph'
 
 const styles = {
   projectSummaryContainer: {
@@ -38,21 +40,6 @@ const styles = {
     width: '90%',
     margin: '0.5em 0'
   },
-  projectName: {
-    fontFamily: 'Montserrat',
-    fontSize: '1.25em',
-    color: '#757892',
-    marginBottom: '0.35em'
-  },
-  shortDescription: {
-    fontFamily: 'Lato script=all rev=1',
-    fontWeight: '300',
-    fontStyle: 'normal',
-    fontSize: '0.8em',
-    color: '#757892',
-    marginBottom: '0.5em',
-    lineHeight: '1.6'
-  },
   technologiesContainer: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -69,12 +56,6 @@ const styles = {
   '@media screen and (min-width: 768px)': {
     projectSummaryContainer: {
       paddingTop: '1em'
-    },
-    projectName: {
-      fontSize: '1.5em'
-    },
-    shortDescription: {
-      fontSize: '1em'
     }
   },
   '@media screen and (min-width: 1200px)': {
@@ -94,8 +75,8 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
       </Link>
       <div className={classes.projectInfoContainer}>
         <Link to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
-          <div className={classes.projectName}>{projectName}</div>
-          <div className={classes.shortDescription}>{shortDescription}</div>
+          <Title titleText={projectName}/>
+          <Paragraph paragraphText={shortDescription}/>
         </Link>
         <div className={classes.technologiesContainer}>
           {

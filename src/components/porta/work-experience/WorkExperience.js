@@ -20,6 +20,11 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center'
+  },
+  '@media screen and (min-width:1200px)':{
+    workExperienceListContainer:{
+      width: '70%'
+    }
   }
 }
 
@@ -65,8 +70,8 @@ export class WorkExperience extends Component {
         <div className={classes.workExperienceContainer}>
           <MediaQuery maxWidth={1199}>
             <MobileHeader ownerName='Carlos Castañeda' />
-            <PageTitle fontAwesomeIcon='fas fa-briefcase' pageTitle='Work Experience' />
           </MediaQuery>
+          <PageTitle fontAwesomeIcon='fas fa-briefcase' pageTitle='Work Experience' />
           <div className={classes.workExperienceListContainer}>
             {
               workExperienceData.map((job)=>{
