@@ -3,6 +3,8 @@ import withStyles from 'react-jss'
 import PropTypes from 'prop-types'
 import MobileMenu from './MobileMenu'
 import posed from 'react-pose'
+import { withRouter } from 'react-router-dom'
+import { compose } from 'redux'
 
 const AnimatedMenuContainer = posed.div({
   visible: {
@@ -40,7 +42,7 @@ const styles = {
     fontSize: '1.5em',
     padding: '0.35em',
     paddingLeft: '0.5em',
-    width:'1em'
+    width: '1em'
   },
   ownerNameContainer: {
     display: 'flex',
@@ -71,8 +73,17 @@ const styles = {
     bottom: '0',
     zIndex: '3'
   },
-  '@media screen and (min-width: 768px)' : {
-    ownerNameText : {
+  startHere: {
+    position: 'absolute',
+    top: '3.25em',
+    left: '0.5em',
+    height: '52px'
+  },
+  startHereHidden: {
+    display: 'none'
+  },
+  '@media screen and (min-width: 768px)': {
+    ownerNameText: {
       fontSize: '1.75em',
       paddingTop: '0.4em',
       paddingBottom: '0.4em'
@@ -80,16 +91,20 @@ const styles = {
     hamburguer: {
       fontSize: '1.75em'
     },
-    mobileMenuContainer : {
+    mobileMenuContainer: {
       top: '3.25em',
       width: '35%'
+    },
+    startHere: {
+      height: '75px'
     }
   }
 }
 
 export class MobileHeader extends Component {
   state = {
-    isMenuVisible: false
+    isMenuVisible: false,
+    startHereVisible: true
   }
 
   static propTypes = {
@@ -106,12 +121,30 @@ export class MobileHeader extends Component {
         isMenuVisible: value
       })
     }
+    // Start Here validation
+    if (this.state.startHereVisible) {
+      this.setState({
+        startHereVisible: false
+      })
+    }
+  }
 
+  componentDidMount(){
+    document.body.style.overflow = 'unset'
+    console.log('kjaskdjhask')
+  }
+
+  componentDidUpdate(){
+    if (this.state.isMenuVisible){
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
   }
 
   render() {
-    const { classes, ownerName } = this.props
-    let iconClass =  this.state.isMenuVisible ? 'fas fa-times' : 'fas fa-bars'
+    const { classes, ownerName, location } = this.props
+    let iconClass = this.state.isMenuVisible ? 'fas fa-times' : 'fas fa-bars'
     return (
       <div className={classes.mobileHeaderContainer}>
         <div className={classes.header}>
@@ -123,6 +156,12 @@ export class MobileHeader extends Component {
               {ownerName}
             </div>
           </div>
+          {location.pathname === '/home' && <img
+            src='https://i.imgur.com/c22dvpl.png'
+            alt='start here'
+            className={this.state.startHereVisible ?
+              classes.startHere :
+              classes.startHereHidden} />}
         </div>
         <AnimatedMenuContainer
           className={classes.mobileMenuContainer}
@@ -135,4 +174,7 @@ export class MobileHeader extends Component {
   }
 }
 
-export default withStyles(styles)(MobileHeader)
+export default compose(
+  withRouter,
+  withStyles(styles)
+)(MobileHeader)
