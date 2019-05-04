@@ -99,11 +99,28 @@ const styles = {
 }
 
 export class Navbar extends Component {
+  state = {
+    /**
+     * Possible values:
+     * - HOME
+     * - PORTAFOLIO
+     * - WORK EXPERIENCE
+     * - EDUCATION
+     */
+    selectedNavButton: 'HOME'
+  }
+
+  updateSelectedNavButton = (newValue) => {
+    console.log('hey', newValue)
+     this.setState({
+       selectedNavButton: newValue
+     })
+  }
 
   render() {
     const { classes, sideHeader } = this.props
     const { sidebar } = sideHeader
-  
+
     return (
       <div className={classes.sideHeaderContainer} >
         <div className={classes.content}>
@@ -126,10 +143,10 @@ export class Navbar extends Component {
             {renderButtons(sidebar.buttons)}
           </div>
           <div className={classes.navButtons}>
-            <NavButton fontAwesomeIcon='fas fa-home' text='home' top={false} bottom={true} />
-            <NavButton fontAwesomeIcon='fas fa-folder-open' text='portafolio' top={true} bottom={true} />
-            <NavButton fontAwesomeIcon='fas fa-briefcase' text='work experience' top={true} bottom={true} />
-            <NavButton fontAwesomeIcon='fas fa-graduation-cap' text='education' top={true} bottom={false} />
+            <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-home' text='home' top={false} bottom={true} selected={this.state.selectedNavButton === 'HOME' ? true : false} />
+            <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-folder-open' text='portafolio' top={true} bottom={true} selected={this.state.selectedNavButton === 'PORTAFOLIO' ? true : false} />
+            <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-briefcase' text='work experience' top={true} bottom={true} selected={this.state.selectedNavButton === 'WORK EXPERIENCE' ? true : false} />
+            <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-graduation-cap' text='education' top={true} bottom={false} selected={this.state.selectedNavButton === 'EDUCATION' ? true : false} />
           </div>
           <div className={classes.currentlyDoing}>
             <CurrentlyDoing currentActivity={sidebar.currentActivity}></CurrentlyDoing>
@@ -147,7 +164,7 @@ export class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  sideHeader : PropTypes.object.isRequired
+  sideHeader: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Navbar)
