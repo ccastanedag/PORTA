@@ -204,28 +204,36 @@ export class ContactMe extends Component {
     message: '',
     successOpen: false,
     errorOpen: false,
-    emptyOpen: false
+    emptyOpen: false,
+    sendClicked: false // This works as some sort of cooldown to avoid multiple clicks on SEND
   }
 
   handleSubmit = (event) => {
-    event.preventDefault()
     const { senderName, senderEmail, subject, message } = this.state
-    //TODO : Validate fields emptiness
-    if ((senderName !== '') && 
-        (senderEmail !== '') && 
-        (subject !== '') && 
-        (message !== '')) {
-      this.sendEmail(
-        template,
-        receiverEmail,
-        senderName,
-        senderEmail,
-        subject,
-        message
-      )
+    event.preventDefault()
+
+    // Validate fields emptiness
+    if ((senderName !== '') &&
+      (senderEmail !== '') &&
+      (subject !== '') &&
+      (message !== '')) {
+      if (!this.state.sendClicked) {
+        this.setState({
+          sendClicked: true
+        })
+        this.sendEmail(
+          template,
+          receiverEmail,
+          senderName,
+          senderEmail,
+          subject,
+          message
+        )
+      }
+
     } else {
       this.setState({
-        emptyOpen : true
+        emptyOpen: true
       })
     }
   }
@@ -245,12 +253,9 @@ export class ContactMe extends Component {
           senderName: '',
           senderEmail: '',
           subject: '',
-          message: ''
-        })
-
-        // Show the Snackbar message - Success
-        this.setState({
-          successOpen: true
+          message: '',
+          successOpen: true,
+          sendClicked: false
         })
       })
       .catch(error => {
