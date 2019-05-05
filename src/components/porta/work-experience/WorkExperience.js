@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import withStyles from 'react-jss'
 import handleLoadingWorkExperience from '../../../store/actions/porta/work-experience/WorkExperienceAction'
 import WorkExperienceDetails from './WorkExperienceDetails'
+import Footer from '../../shared/Footer'
 
 const styles = {
   workExperienceContainer:{
@@ -81,6 +82,7 @@ export class WorkExperience extends Component {
               })
               }
           </div>
+          <Footer />
         </div>
       )
     }
