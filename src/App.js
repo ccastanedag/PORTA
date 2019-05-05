@@ -18,9 +18,22 @@ import { categories } from './utils/categoriesUtils'
 import { convertToSlug } from './utils/utils'
 
 const styles = {
+  appContainer: {
+    display: 'flex',
+    flexDirection:'column',
+    height:'100%'
+  },
+  noSidebar:{
+    height: '100%'
+  },
+  content:{
+    height: '100%'
+  },
   '@media screen and (min-width: 1200px)': {
     appContainer: {
-      display: 'flex'
+      display: 'flex',
+      flexDirection:'row',
+      height:'auto'
     },
     sidebar: {
       flexBasis: '22%'
@@ -29,7 +42,8 @@ const styles = {
       flex: '1',
       display: 'flex',
       flexDirection: 'column',
-      maxHeight: '100vh'
+      maxHeight: '100vh',
+      height: 'auto'
     },
     header: {
       height: '120px',
@@ -40,7 +54,8 @@ const styles = {
       display: 'flex',
       justifyContent: 'center',
       aligntItems: 'center',
-      overflowY:'scroll'
+      overflowY:'scroll',
+      height:'auto'
     }
   },
   '@media screen and (min-width: 1600px)': {
