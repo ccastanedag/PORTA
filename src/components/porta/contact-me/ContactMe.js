@@ -9,11 +9,20 @@ import Footer from '../../shared/Footer'
 const styles = {
   contactMeContainer: {
     width: '100%',
+    height: '100%'
+  },
+  contactMeContainerDesktop: {
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  contactMeContainerMobile: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
-    height:'100%'
+    height: '100%'
   },
   floatingBox: {
     flex: '1',
@@ -34,7 +43,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height:'100%'
+    height: '100%'
   },
   labelInput: {
     alignSelf: 'center',
@@ -42,50 +51,68 @@ const styles = {
     flexDirection: 'column',
     width: '95%',
     fontFamily: 'Lato',
-    fontSize:'1em',
+    fontSize: '1em',
     color: '#86A8E7',
     padding: '0.35em 0'
   },
-  input:{
+  input: {
     border: '1px solid #EAEFFB',
     background: '#F4F7FD',
     padding: '0.5em 0.2em',
     color: '#86A8E7',
     borderRadius: '5px',
-    marginTop:'0.35em'
+    marginTop: '0.35em'
   },
   sendButton: {
     border: 'none',
     background: 'rgba(255,255,255,0)',
     padding: '0',
     alignSelf: 'flex-start',
-    marginLeft:'0.35em'
+    marginLeft: '0.35em'
   },
-  labelTextArea:{
-    extend:'labelInput',
-    flex:'1',
+  labelTextArea: {
+    extend: 'labelInput',
+    flex: '1',
     marginBottom: '0.75em'
   },
-  textarea:{
-    extend:'input',
-    height:'100%'
+  textarea: {
+    extend: 'input',
+    height: '100%'
   },
-  '@media screen and (max-width:1199px)' : {
-    '@global' : {
-      html: {
-       height:'100%'
-      },
-      body: {
-        height:'100%'
-       },
-      '#root' : {
-        height:'100%'
-      } 
+  nameEmail: {
+    alignSelf:'center',
+    width:'95%', 
+    display: 'flex',
+    justifyContent:'space-between',
+    '& $labelInput' : {
+      width:'49%'
     }
   },
-  '@media screen and (max-height: 700px)' : {
-    contactMeContainer : {
-      height:'700px'
+  '@media screen and (max-width:1199px)': {
+    '@global': {
+      html: {
+        height: '100%'
+      },
+      body: {
+        height: '100%'
+      },
+      '#root': {
+        height: '100%'
+      }
+    }
+  },
+  '@media screen and (max-height: 700px)': {
+    contactMeContainerMobile: {
+      height: '700px'
+    }
+  },
+  '@media screen and (min-width: 1200px)': {
+    contactMeContainer: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    floatingBox: {
+      width: '70%'
     }
   }
 }
@@ -118,60 +145,120 @@ export class ContactMe extends Component {
     return (
       <div className={classes.contactMeContainer}>
         <MediaQuery maxWidth={1199}>
-          <MobileHeader ownerName='Carlos Castañeda' />
-        </MediaQuery>
-        <PageTitle fontAwesomeIcon='fas fa-envelope' pageTitle='Contact Me' />
-        <div className={classes.floatingBox}>
-          <form onSubmit={this.handleSubmit} className={classes.form}>
-            <label className={classes.labelInput}>
-              Your Name:
+          <div className={classes.contactMeContainerMobile}>
+            <MobileHeader ownerName='Carlos Castañeda' />
+            <PageTitle fontAwesomeIcon='fas fa-envelope' pageTitle='Contact Me' />
+            <div className={classes.floatingBox}>
+              <form onSubmit={this.handleSubmit} className={classes.form}>
+                <label className={classes.labelInput}>
+                  Your Name:
               <input
-                type='text'
-                name='yourName'
-                onChange={this.handleChange}
-                value={yourName}
-                className={classes.input}
-              />
-            </label>
-            <label className={classes.labelInput}>
-              Your Email:
+                    type='text'
+                    name='yourName'
+                    onChange={this.handleChange}
+                    value={yourName}
+                    className={classes.input}
+                  />
+                </label>
+                <label className={classes.labelInput}>
+                  Your Email:
               <input
-                type='email'
-                name='yourEmail'
-                onChange={this.handleChange}
-                value={yourEmail}
-                className={classes.input}
-              />
-            </label>
-            <label className={classes.labelInput}>
-              Subject:
+                    type='email'
+                    name='yourEmail'
+                    onChange={this.handleChange}
+                    value={yourEmail}
+                    className={classes.input}
+                  />
+                </label>
+                <label className={classes.labelInput}>
+                  Subject:
               <input
-                type='text'
-                name='subject'
-                onChange={this.handleChange}
-                value={subject}
-                className={classes.input}
-              />
-            </label>
-            <label className={classes.labelTextArea}>
-              Message:
+                    type='text'
+                    name='subject'
+                    onChange={this.handleChange}
+                    value={subject}
+                    className={classes.input}
+                  />
+                </label>
+                <label className={classes.labelTextArea}>
+                  Message:
               <textarea
-                name='message'
-                value={message}
-                onChange={this.handleChange} 
-                className={classes.textarea}
-                rows={5}/>
-            </label>
-            <button type='submit' className={classes.sendButton}>
-              <ButtonFactory
-                buttonText='Send'
-                fontAwesomeIcon='fas fa-paper-plane'
-                redirectTo=''
-                gradient={{ start: '#8989CB', end: '#86A8E7' }} />
-            </button>
-          </form>
-        </div>
-        <Footer />
+                    name='message'
+                    value={message}
+                    onChange={this.handleChange}
+                    className={classes.textarea}
+                    rows={5} />
+                </label>
+                <button type='submit' className={classes.sendButton}>
+                  <ButtonFactory
+                    buttonText='Send'
+                    fontAwesomeIcon='fas fa-paper-plane'
+                    redirectTo=''
+                    gradient={{ start: '#8989CB', end: '#86A8E7' }} />
+                </button>
+              </form>
+            </div>
+            <Footer />
+          </div>
+        </MediaQuery>
+        <MediaQuery minWidth={1200} className={classes.desktopContent}>
+          <div className={classes.contactMeContainerDesktop}>
+            <PageTitle fontAwesomeIcon='fas fa-envelope' pageTitle='Contact Me' />
+            <div className={classes.floatingBox}>
+              <form onSubmit={this.handleSubmit} className={classes.form}>
+                <div className={classes.nameEmail}>
+                  <label className={classes.labelInput}>
+                    Your Name:
+              <input
+                      type='text'
+                      name='yourName'
+                      onChange={this.handleChange}
+                      value={yourName}
+                      className={classes.input}
+                    />
+                  </label>
+                  <label className={classes.labelInput}>
+                    Your Email:
+              <input
+                      type='email'
+                      name='yourEmail'
+                      onChange={this.handleChange}
+                      value={yourEmail}
+                      className={classes.input}
+                    />
+                  </label>
+                </div>
+                <label className={classes.labelInput}>
+                  Subject:
+              <input
+                    type='text'
+                    name='subject'
+                    onChange={this.handleChange}
+                    value={subject}
+                    className={classes.input}
+                  />
+                </label>
+                <label className={classes.labelTextArea}>
+                  Message:
+              <textarea
+                    name='message'
+                    value={message}
+                    onChange={this.handleChange}
+                    className={classes.textarea}
+                    rows={5} />
+                </label>
+                <button type='submit' className={classes.sendButton}>
+                  <ButtonFactory
+                    buttonText='Send'
+                    fontAwesomeIcon='fas fa-paper-plane'
+                    redirectTo=''
+                    gradient={{ start: '#8989CB', end: '#86A8E7' }} />
+                </button>
+              </form>
+            </div>
+          </div>
+          <Footer />
+        </MediaQuery>
       </div>
     )
   }
