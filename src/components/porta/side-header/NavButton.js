@@ -32,13 +32,13 @@ const styles = {
     navButtonContainer: props => ({
       padding: '1em 0 1em 20%'
     }),
-    icon: {
-      fontSize: '1.85em'
-    },
-    text: {
+    icon: props => ({
+      fontSize: '1.8em'
+    }),
+    text: props => ({
       fontSize: '1.25em',
       marginLeft: '0.75em'
-    }
+    })
   }
 }
 
