@@ -9,7 +9,6 @@ const styles = {
   mobileMenuContainer: {
     display: 'flex',
     flexDirection: 'column',
-    height: '200px',
     background: 'white'
   },
   mobileMenuItemContainer: {
@@ -27,7 +26,7 @@ const styles = {
     }
   },
   mobileMenuItem: {
-
+    padding: '0.5em 0'
   },
   icon: {
     fontSize: '1.5em',
@@ -46,11 +45,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     marginLeft: '1.5em'
-  },
-  '@media screen and (min-width: 768px)': {
-    mobileMenuContainer: {
-      height: '250px'
-    }
   }
 }
 
@@ -92,6 +86,12 @@ export class MobileMenu extends Component {
         </Link>
         <Link to='/education' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-graduation-cap' text='Education' />
+        </Link>
+        <Link to='/contact-me' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
+          <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-envelope' text='Contact Me' />
+        </Link>
+        <Link to='/download-cv' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
+          <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-file-pdf' text='Download CV' />
         </Link>
       </div>
     )

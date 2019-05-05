@@ -203,27 +203,31 @@ export class ContactMe extends Component {
     subject: '',
     message: '',
     successOpen: false,
-    errorOpen: false
+    errorOpen: false,
+    emptyOpen: false
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-
-    /*const {
-      REACT_APP_EMAILJS_RECEIVER: receiverEmail,
-      REACT_APP_EMAILJS_TEMPLATEID: template
-    } = this.props.env*/
-
-    //TODO : Validate fields emptiness and email format
-
-    this.sendEmail(
-      template,
-      receiverEmail,
-      this.state.senderName,
-      this.state.senderEmail,
-      this.state.subject,
-      this.state.message
-    )
+    const { senderName, senderEmail, subject, message } = this.state
+    //TODO : Validate fields emptiness
+    if ((senderName !== '') && 
+        (senderEmail !== '') && 
+        (subject !== '') && 
+        (message !== '')) {
+      this.sendEmail(
+        template,
+        receiverEmail,
+        senderName,
+        senderEmail,
+        subject,
+        message
+      )
+    } else {
+      this.setState({
+        emptyOpen : true
+      })
+    }
   }
 
   sendEmail = (templateId, receiverEmail, senderName, senderEmail, subject, message) => {
@@ -252,7 +256,7 @@ export class ContactMe extends Component {
       .catch(error => {
         // Show the Snackbar message - Error
         this.setState({
-          errorOpen : true
+          errorOpen: true
         })
         console.error('Failed to send email. Error: ', error)
       })
@@ -268,10 +272,11 @@ export class ContactMe extends Component {
   }
 
   handleClose = (event) => {
-    this.setState({ 
+    this.setState({
       successOpen: false,
-      errorOpen : false
-     });
+      errorOpen: false,
+      emptyOpen: false
+    });
   }
 
   render() {
@@ -406,7 +411,7 @@ export class ContactMe extends Component {
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant="success"
-            message="Your message have been successfully sent. I'll contact you as soon as possible"
+            message="Thanks for your message. I'll contact you as soon as possible"
           />
         </Snackbar>
         <Snackbar
@@ -422,6 +427,21 @@ export class ContactMe extends Component {
             onClose={this.handleClose}
             variant="error"
             message="Failed to send email."
+          />
+        </Snackbar>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          open={this.state.emptyOpen}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+        >
+          <MySnackbarContentWrapper
+            onClose={this.handleClose}
+            variant="error"
+            message="All fields are required. Thanks!"
           />
         </Snackbar>
       </div>
