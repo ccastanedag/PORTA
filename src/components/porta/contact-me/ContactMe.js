@@ -5,6 +5,45 @@ import MobileHeader from '../side-header/MobileHeader'
 import PageTitle from '../../shared/PageTitle'
 import ButtonFactory from '../../shared/ButtonFactory'
 import Footer from '../../shared/Footer'
+import Snackbar from '@material-ui/core/Snackbar'
+import SnackbarContent from '@material-ui/core/SnackbarContent'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import ErrorIcon from '@material-ui/icons/Error'
+import PropTypes from 'prop-types'
+import green from '@material-ui/core/colors/green'
+import IconButton from '@material-ui/core/IconButton'
+import classNames from 'classnames'
+import CloseIcon from '@material-ui/icons/Close'
+import { withStyles as withStylesUI } from '@material-ui/core/styles'
+import {
+  REACT_APP_EMAILJS_RECEIVER as receiverEmail,
+  REACT_APP_EMAILJS_TEMPLATEID as template
+} from '../../../env'
+
+const variantIcon = {
+  success: CheckCircleIcon,
+  error: ErrorIcon
+}
+
+const styles1 = theme => ({
+  success: {
+    backgroundColor: green[600],
+  },
+  error: {
+    backgroundColor: theme.palette.error.dark,
+  },
+  icon: {
+    fontSize: 20,
+  },
+  iconVariant: {
+    opacity: 0.9,
+    marginRight: theme.spacing.unit,
+  },
+  message: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+})
 
 const styles = {
   contactMeContainer: {
@@ -80,12 +119,12 @@ const styles = {
     height: '100%'
   },
   nameEmail: {
-    alignSelf:'center',
-    width:'95%', 
+    alignSelf: 'center',
+    width: '95%',
     display: 'flex',
-    justifyContent:'space-between',
-    '& $labelInput' : {
-      width:'49%'
+    justifyContent: 'space-between',
+    '& $labelInput': {
+      width: '49%'
     }
   },
   '@media screen and (max-width:1199px)': {
@@ -117,17 +156,106 @@ const styles = {
   }
 }
 
+function MySnackbarContent(props) {
+  const { classes, className, message, onClose, variant, ...other } = props;
+  const Icon = variantIcon[variant];
+
+  return (
+    <SnackbarContent
+      className={classNames(classes[variant], className)}
+      aria-describedby="client-snackbar"
+      message={
+        <span id="client-snackbar" className={classes.message}>
+          <Icon className={classNames(classes.icon, classes.iconVariant)} />
+          {message}
+        </span>
+      }
+      action={[
+        <IconButton
+          key="close"
+          aria-label="Close"
+          color="inherit"
+          className={classes.close}
+          onClick={onClose}
+        >
+          <CloseIcon className={classes.icon} />
+        </IconButton>,
+      ]}
+      {...other}
+    />
+  )
+}
+
+MySnackbarContent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  message: PropTypes.node,
+  onClose: PropTypes.func,
+  variant: PropTypes.oneOf(['success', 'error']).isRequired,
+}
+
+const MySnackbarContentWrapper = withStylesUI(styles1)(MySnackbarContent)
+
 export class ContactMe extends Component {
   state = {
-    yourName: '',
-    yourEmail: '',
+    senderName: '',
+    senderEmail: '',
     subject: '',
-    message: ''
+    message: '',
+    successOpen: false,
+    errorOpen: false
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    alert('A message have been submitted !')
+
+    /*const {
+      REACT_APP_EMAILJS_RECEIVER: receiverEmail,
+      REACT_APP_EMAILJS_TEMPLATEID: template
+    } = this.props.env*/
+
+    //TODO : Validate fields emptiness and email format
+
+    this.sendEmail(
+      template,
+      receiverEmail,
+      this.state.senderName,
+      this.state.senderEmail,
+      this.state.subject,
+      this.state.message
+    )
+  }
+
+  sendEmail = (templateId, receiverEmail, senderName, senderEmail, subject, message) => {
+    window.emailjs.send(
+      'mailgun',
+      templateId,
+      {
+        senderName,
+        senderEmail,
+        subject,
+        message
+      })
+      .then(response => {
+        this.setState({
+          senderName: '',
+          senderEmail: '',
+          subject: '',
+          message: ''
+        })
+
+        // Show the Snackbar message - Success
+        this.setState({
+          successOpen: true
+        })
+      })
+      .catch(error => {
+        // Show the Snackbar message - Error
+        this.setState({
+          errorOpen : true
+        })
+        console.error('Failed to send email. Error: ', error)
+      })
   }
 
   handleChange = (event) => {
@@ -139,9 +267,16 @@ export class ContactMe extends Component {
     })
   }
 
+  handleClose = (event) => {
+    this.setState({ 
+      successOpen: false,
+      errorOpen : false
+     });
+  }
+
   render() {
     const { classes } = this.props
-    const { yourName, yourEmail, subject, message } = this.state
+    const { senderName, senderEmail, subject, message } = this.state
     return (
       <div className={classes.contactMeContainer}>
         <MediaQuery maxWidth={1199}>
@@ -154,9 +289,9 @@ export class ContactMe extends Component {
                   Your Name:
               <input
                     type='text'
-                    name='yourName'
+                    name='senderName'
                     onChange={this.handleChange}
-                    value={yourName}
+                    value={senderName}
                     className={classes.input}
                   />
                 </label>
@@ -164,9 +299,9 @@ export class ContactMe extends Component {
                   Your Email:
               <input
                     type='email'
-                    name='yourEmail'
+                    name='senderEmail'
                     onChange={this.handleChange}
-                    value={yourEmail}
+                    value={senderEmail}
                     className={classes.input}
                   />
                 </label>
@@ -211,9 +346,9 @@ export class ContactMe extends Component {
                     Your Name:
               <input
                       type='text'
-                      name='yourName'
+                      name='senderName'
                       onChange={this.handleChange}
-                      value={yourName}
+                      value={senderName}
                       className={classes.input}
                     />
                   </label>
@@ -221,9 +356,9 @@ export class ContactMe extends Component {
                     Your Email:
               <input
                       type='email'
-                      name='yourEmail'
+                      name='senderEmail'
                       onChange={this.handleChange}
-                      value={yourEmail}
+                      value={senderEmail}
                       className={classes.input}
                     />
                   </label>
@@ -259,6 +394,36 @@ export class ContactMe extends Component {
           </div>
           <Footer />
         </MediaQuery>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          open={this.state.successOpen}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+        >
+          <MySnackbarContentWrapper
+            onClose={this.handleClose}
+            variant="success"
+            message="Your message have been successfully sent. I'll contact you as soon as possible"
+          />
+        </Snackbar>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          open={this.state.errorOpen}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+        >
+          <MySnackbarContentWrapper
+            onClose={this.handleClose}
+            variant="error"
+            message="Failed to send email."
+          />
+        </Snackbar>
       </div>
     )
   }
