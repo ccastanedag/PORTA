@@ -19,6 +19,7 @@ import SubTitle from '../../shared/SubTitle'
 import Paragraph from '../../shared/Paragraph'
 import SimpleList from '../../shared/SimpleList'
 import ColoredList from '../../shared/ColoredList'
+import TagsContainer from '../../shared/TagsContainer'
 
 const styles = {
   projectDetailContainer: {
@@ -292,19 +293,7 @@ export class PortafolioDetail extends Component {
                 </div>
               </div>
               <div className={classes.technologiesContainer}>
-                <div className={classes.techs}>Main Technologies:</div>
-                <Separator width='100%' />
-                <div className={classes.tagContainer}>
-                  {
-                    technologies.map((technology) => {
-                      const techTag = getElementFromListByAttribute(technologiesFb, 'technologyName', technology)
-                      return (
-                        <Tag tagLogo={techTag.technologyLogo} tagText={techTag.technologyName} />
-                      )
-                    })
-                  }
-                </div>
-                <Separator width='100%' />
+                <TagsContainer title='Main Technologies:' tagsArray={technologies} tagsArrayFb={technologiesFb}/>
                 <Title titleText={projectName}/>
                 <SubTitle subTitleText={`Development Time: ${developmentTime}`}/>
                 <Paragraph paragraphText={longDescription}/>
