@@ -21,20 +21,20 @@ import Loading from './components/shared/Loading'
 const styles = {
   appContainer: {
     display: 'flex',
-    flexDirection:'column',
-    height:'100%'
-  },
-  noSidebar:{
+    flexDirection: 'column',
     height: '100%'
   },
-  content:{
+  noSidebar: {
+    height: '100%'
+  },
+  content: {
     height: '100%'
   },
   '@media screen and (min-width: 1200px)': {
     appContainer: {
       display: 'flex',
-      flexDirection:'row',
-      height:'auto'
+      flexDirection: 'row',
+      height: 'auto'
     },
     sidebar: {
       flexBasis: '22%'
@@ -51,12 +51,12 @@ const styles = {
       minHeight: '120px'
     },
     content: {
-      flex:'1',
+      flex: '1',
       display: 'flex',
       justifyContent: 'center',
       aligntItems: 'center',
-      overflowY:'scroll',
-      height:'auto'
+      overflowY: 'scroll',
+      height: 'auto'
     }
   },
   '@media screen and (min-width: 1600px)': {
@@ -119,32 +119,34 @@ class App extends Component {
       const { header } = SideHeader
       return (
         <BrowserRouter>
-          <div className={classes.appContainer}>
-            <div className={classes.sidebar}>
-              <MediaQuery minWidth={1200}>
-                <Navbar sideHeader={SideHeader} className={classes.sidebar} />
-              </MediaQuery>
-            </div>
-            <div className={classes.noSidebar}>
-              <div className={classes.header}>
+          <Route children={({ location }) => (
+            <div className={classes.appContainer}>
+              <div className={classes.sidebar}>
                 <MediaQuery minWidth={1200}>
-                  <Header className={classes.header} header={header} />
+                  <Navbar sideHeader={SideHeader} className={classes.sidebar} location={location}/>
                 </MediaQuery>
               </div>
-              <div className={classes.content}>
-                <Switch>
-                  <Route exact path='/' render={() => <Redirect to="/home" />} />
-                  <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
-                  <Route path='/contact-me' component={ContactMe} />
-                  <Route exact path='/portafolio' render={() => <Redirect to={`/portafolio/${convertToSlug(categories[0])}`}/>} />
-                  <Route exact path='/portafolio/:categoryId' component={Portafolio} />
-                  <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
-                  <Route path='/work-experience' component={WorkExperience} />
-                  <Route path='/education' component={Education} />
-                </Switch>
+              <div className={classes.noSidebar}>
+                <div className={classes.header}>
+                  <MediaQuery minWidth={1200}>
+                    <Header className={classes.header} header={header} />
+                  </MediaQuery>
+                </div>
+                <div className={classes.content}>
+                  <Switch>
+                    <Route exact path='/' render={() => <Redirect to="/home" />} />
+                    <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
+                    <Route path='/contact-me' component={ContactMe} />
+                    <Route exact path='/portafolio' render={() => <Redirect to={`/portafolio/${convertToSlug(categories[0])}`} />} />
+                    <Route exact path='/portafolio/:categoryId' component={Portafolio} />
+                    <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
+                    <Route path='/work-experience' component={WorkExperience} />
+                    <Route path='/education' component={Education} />
+                  </Switch>
+                </div>
               </div>
             </div>
-          </div>
+          )} />
         </BrowserRouter>
       )
     }

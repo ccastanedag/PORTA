@@ -110,8 +110,32 @@ export class Navbar extends Component {
     selectedNavButton: 'HOME'
   }
 
+  componentDidMount(){
+    const pathName = this.props.location.pathname
+    if(pathName.includes('home')){
+      this.setState({
+        selectedNavButton:'HOME'
+      })
+    } else if(pathName.includes('portafolio')){
+      this.setState({
+        selectedNavButton:'PORTAFOLIO'
+      })
+    } else  if(pathName.includes('work-experience')){
+      this.setState({
+        selectedNavButton:'WORK EXPERIENCE'
+      })
+    } else if(pathName.includes('education')){
+      this.setState({
+        selectedNavButton:'EDUCATION'
+      })
+    } else {
+      this.setState({
+        selectedNavButton:'HOME'
+      })
+    }
+  }
+
   updateSelectedNavButton = (newValue) => {
-    console.log('hey', newValue)
      this.setState({
        selectedNavButton: newValue
      })
