@@ -40,7 +40,7 @@ const TagsContainer = ({ classes, title, tagsArray, tagsArrayFb }) => {
           tagsArray.map((tag) => {
             const techTag = getElementFromListByAttribute(tagsArrayFb, 'technologyName', tag)
             return (
-              <Tag tagLogo={techTag.technologyLogo} tagText={techTag.technologyName} />
+              <Tag key={techTag.technologyName} tagLogo={techTag.technologyLogo} tagText={techTag.technologyName} />
             )
           })
         }

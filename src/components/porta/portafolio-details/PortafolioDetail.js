@@ -203,7 +203,6 @@ export class PortafolioDetail extends Component {
 
   componentDidMount() {
     const projectId = convertSlugToTitle(this.props.match.params.projectId)
-    console.log('OJO', projectId)
     this.props.dispatch(handleLoadingProjectDetail(projectId))
   }
 
@@ -270,7 +269,7 @@ export class PortafolioDetail extends Component {
                   {
                     projectImages.map((image) => {
                       return (
-                        <div>
+                        <div key={image}>
                           <img src={image} alt='Project pictures carousel' />
                         </div>
                       )
@@ -282,6 +281,7 @@ export class PortafolioDetail extends Component {
                     buttons.map((button) => {
                       return (
                         <ButtonFactory
+                          key={button.redirectTo}
                           buttonText={button.buttonText}
                           fontAwesomeIcon={button.fontAwesomeIcon}
                           redirectTo={button.redirectTo}

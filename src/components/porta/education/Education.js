@@ -242,9 +242,8 @@ export class Education extends Component {
                 <div className={classes.timeLine}>
                   {educationArray.map((education) => {
                     return (
-                      <div className={classes.element}>
+                      <div className={classes.element} key={education.school}>
                         <EducationBox
-                          key={education.school}
                           classes={classes}
                           time={education.time}
                           school={education.school}

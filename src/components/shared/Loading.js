@@ -31,7 +31,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    height:'100vh'
+    height: '100vh'
   },
   box1: {
     background: '#8989CB',
@@ -53,11 +53,11 @@ const styles = {
     fontStyle: 'normal',
     color: '#757892',
     fontSize: '1em',
-    marginTop:'1.5em'
+    marginTop: '1.5em'
   }
 }
 
-var interval 
+var interval
 
 export class Loading extends Component {
   state = {
@@ -83,11 +83,15 @@ export class Loading extends Component {
           return this.setState({
             step: 'one'
           })
+        default:
+          return this.setState({
+            step: 'one'
+          })
       }
     }.bind(this), 250)
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     window.clearInterval(interval)
   }
 
