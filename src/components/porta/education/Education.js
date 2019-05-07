@@ -30,7 +30,10 @@ const styles = {
   educationInfoContainerDesktop: {
     flex: '1',
     width: '70%',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   // BEGIN - EducationBox styling
   educationBoxContainer: {
@@ -92,10 +95,56 @@ const styles = {
       flex: '1'
     },
     timeLine: {
-
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      width: '100%',
+      position: 'relative',
+      '&:after': {
+        background: '#86A8E7',
+        content: '""',
+        position: 'absolute',
+        left: 'calc(50% - 2px)',
+        width: '4px',
+        height: '100%',
+      }
     },
+    circle: {},
     element: {
-
+      position: 'relative',
+      display: 'flex',
+      width: '45%',
+      alignSelf: 'flex-end',
+      '&:nth-child(odd)': {
+        alignSelf: 'flex-start'
+      },
+      '& $circle': {
+        position: 'absolute',
+        background: '#86A8E7',
+        border: '5px solid #86A8E7',
+        borderRadius: '50%',
+        top: 'calc(50% - 5px)',
+        left: 'calc(-11% - 5px)',
+        width: '10px',
+        height: '10px',
+        zIndex: '6',
+        boxSizing: 'border-box'
+      },
+      '&:nth-child(odd) $circle': {
+        position: 'absolute',
+        background: '#86A8E7',
+        border: '5px solid #86A8E7',
+        borderRadius: '50%',
+        top: 'calc(50% - 5px)',
+        right: 'calc(-11.25% - 5px)',
+        left:'auto',
+        width: '10px',
+        height: '10px',
+        zIndex: '6'
+      }
+    },
+    tagsContainer: {
+      alignSelf: 'stretch'
     }
   }
 }
@@ -187,16 +236,21 @@ export class Education extends Component {
             <div className={classes.educationContainerDesktop}>
               <PageTitle fontAwesomeIcon='fas fa-graduation-cap' pageTitle='Education' />
               <div className={classes.educationInfoContainerDesktop}>
-                <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
-                <div className={classes.educationListContainer}>
+                <div className={classes.tagsContainer}>
+                  <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
+                </div>
+                <div className={classes.timeLine}>
                   {educationArray.map((education) => {
                     return (
-                      <EducationBox
-                        key={education.school}
-                        classes={classes}
-                        time={education.time}
-                        school={education.school}
-                        course={education.course} />
+                      <div className={classes.element}>
+                        <EducationBox
+                          key={education.school}
+                          classes={classes}
+                          time={education.time}
+                          school={education.school}
+                          course={education.course} />
+                        <span className={classes.circle}></span>
+                      </div>
                     )
                   })
                   }
