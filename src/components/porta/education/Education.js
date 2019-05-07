@@ -64,6 +64,17 @@ const styles = {
   course: {
     extend: 'time',
     fontSize: '0.9em'
+  },
+  '@media screen and (min-width:768px)':{
+    time : {
+      fontSize: '1em'
+    },
+    school: {
+      fontSize: '1.2em'
+    },
+    course: {
+      fontSize: '1.1em'
+    }
   }
   // END - EducationBox styling
 }
