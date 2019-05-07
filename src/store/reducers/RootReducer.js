@@ -3,6 +3,7 @@ import WorkExperienceReducer from './porta/work-experience/WorkExperienceReducer
 import HomeReducer from './porta/home/HomeReducer'
 import PortafolioListReducer from './porta/portafolio/PortafolioListReducer'
 import ProjectDetailReducer from './porta/portafolio-details/ProjectDetailReducer'
+import EducationReducer from './porta/education/EducationReducer'
 import {combineReducers} from 'redux'
 
 const rootReducer = combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
   home: HomeReducer,
   portafolioList: PortafolioListReducer,
   projectDetail: ProjectDetailReducer,
-  workExperience: WorkExperienceReducer
+  workExperience: WorkExperienceReducer,
+  education: EducationReducer
 });
 
 export default rootReducer

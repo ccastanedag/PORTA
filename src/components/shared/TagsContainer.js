@@ -25,11 +25,21 @@ const TagsContainer = ({ classes, title, tagsArray, tagsArrayFb }) => {
       <div className={classes.title}>{title}</div>
       <Separator width='100%' />
       <div className={classes.tags}>
-        {
+        {/* If we want to get SOME technologies tags (defined by tagsArray)  */}
+        { tagsArray.length !== 0 &&
           tagsArray.map((tag) => {
             const techTag = getElementFromListByAttribute(tagsArrayFb, 'technologyName', tag)
             return (
               <Tag tagLogo={techTag.technologyLogo} tagText={techTag.technologyName} />
+            )
+          })
+        }
+        {/* If we want to get ALL technologies tags  */}
+        {
+          tagsArray.length === 0 &&
+          tagsArrayFb.map((tagFb)=>{
+            return (
+              <Tag tagLogo={tagFb.technologyLogo} tagText={tagFb.technologyName}/>
             )
           })
         }
@@ -41,8 +51,11 @@ const TagsContainer = ({ classes, title, tagsArray, tagsArrayFb }) => {
 
 TagsContainer.propTypes = {
   title: PropTypes.string.isRequired,
-  tagsArray: PropTypes.array.isRequired,
   tagsArrayFb: PropTypes.array.isRequired
+}
+
+TagsContainer.defaultProps = {
+  tagsArray: []
 }
 
 export default withStyles(styles)(TagsContainer)
