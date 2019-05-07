@@ -10,6 +10,7 @@ import TagsContainer from '../../shared/TagsContainer'
 import PropTypes from 'prop-types'
 import Footer from '../../shared/Footer'
 import Loading from '../../shared/Loading'
+import Message from '../../shared/Message'
 
 const styles = {
   educationContainer: {
@@ -187,7 +188,7 @@ export class Education extends Component {
     if (this.props !== prevProps) {
       this.setState({
         isFetching: this.props.isFetching,
-        error: this.props.error,
+        //error: this.props.error,
         EducationData: this.props.EducationData
       })
     }
@@ -200,13 +201,11 @@ export class Education extends Component {
       return (<Loading />)
 
     if (error)
-      return (
-        <div>
-          THERE WAS AN ERROR !!!
-        <p>{error}</p>
-          {console.log('ERROR: ', error)}
-        </div>
-      )
+      return (<Message 
+        fontAwesomeIcon='fas fa-exclamation-circle' 
+        title='OOPS!' 
+        subTitle="COULDN'T CONNECT TO THE DATABASE"
+        message="The reason could be the database is temporarily unavailable, please try again later."/>)
 
     if (EducationData !== undefined) {
       const { educationArray, techArray } = EducationData
