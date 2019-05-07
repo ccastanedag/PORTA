@@ -131,7 +131,6 @@ export class MobileHeader extends Component {
 
   componentDidMount(){
     document.body.style.overflow = 'unset'
-    console.log('kjaskdjhask')
   }
 
   componentDidUpdate(){

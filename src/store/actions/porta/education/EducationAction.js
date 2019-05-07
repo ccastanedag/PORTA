@@ -4,7 +4,6 @@ import {
   FETCHING_EDUCATION_ERROR,
   FETCHING_EDUCATION_SUCCESS
 } from '../../../reducers/porta/education/EducationReducer'
-import { promises } from 'fs';
 
 const loadingEducation = () => {
   return {

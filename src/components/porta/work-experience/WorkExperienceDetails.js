@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
-import Title from '../../shared/Title'
 import SubTitle from '../../shared/SubTitle'
 import Paragraph from '../../shared/Paragraph'
 import SimpleList from '../../shared/SimpleList'
@@ -26,7 +25,6 @@ const styles = {
     fontFamily: 'Montserrat',
     fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '1.1em',
     padding: '0.45em 0 0.45em 1em',
     textTransform: 'uppercase',
     fontSize:'1em'
