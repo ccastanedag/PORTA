@@ -16,6 +16,7 @@ import Header from './components/porta/side-header/Header'
 import MediaQuery from 'react-responsive'
 import { categories } from './utils/categoriesUtils'
 import { convertToSlug } from './utils/utils'
+import Loading from './components/shared/Loading'
 
 const styles = {
   appContainer: {
@@ -102,7 +103,7 @@ class App extends Component {
     const { classes } = this.props
 
     if (isFetching)
-      return (<div>LOADING...</div>)
+      return (<Loading />)
 
     if (error)
       return (

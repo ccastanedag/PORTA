@@ -8,6 +8,7 @@ import withStyles from 'react-jss'
 import handleLoadingWorkExperience from '../../../store/actions/porta/work-experience/WorkExperienceAction'
 import WorkExperienceDetails from './WorkExperienceDetails'
 import Footer from '../../shared/Footer'
+import Loading from '../../shared/Loading'
 
 const styles = {
   workExperienceContainer:{
@@ -55,7 +56,7 @@ export class WorkExperience extends Component {
     const { isFetching, error, workExperienceData } = this.state
 
     if (isFetching)
-      return (<div>LOADING...</div>)
+      return (<Loading />)
 
     if (error)
       return (

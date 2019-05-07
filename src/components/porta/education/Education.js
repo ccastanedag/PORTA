@@ -9,6 +9,7 @@ import handleLoadingEducation from '../../../store/actions/porta/education/Educa
 import TagsContainer from '../../shared/TagsContainer'
 import PropTypes from 'prop-types'
 import Footer from '../../shared/Footer'
+import Loading from '../../shared/Loading'
 
 const styles = {
   educationContainer: {
@@ -196,7 +197,7 @@ export class Education extends Component {
     const { isFetching, error, EducationData } = this.state
     const { classes } = this.props
     if (isFetching)
-      return (<div>LOADING...</div>)
+      return (<Loading />)
 
     if (error)
       return (

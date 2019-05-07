@@ -13,6 +13,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Separator from '../../shared/Separator'
 import PropTypes from 'prop-types'
+import Loading from '../../shared/Loading'
+
 const styles = {
   homeContainer: {
     width: '100%',
@@ -171,7 +173,7 @@ export class Home extends Component {
     const { isFetching, homeData, error } = this.state
 
     if (isFetching)
-      return (<div>LOADING...</div>)
+      return (<Loading />)
 
     if (error)
       return (

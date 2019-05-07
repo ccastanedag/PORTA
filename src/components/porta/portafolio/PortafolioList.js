@@ -6,6 +6,7 @@ import withStyles from 'react-jss'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import ProjectSummary from './ProjectSummary'
+import Loading from '../../shared/Loading'
 
 const styles = {
   portafolioListContainer: {
@@ -57,7 +58,7 @@ export class PortafolioList extends Component {
     const { isFetching, error, portafolioListData } = this.state
 
     if (isFetching)
-      return (<div>LOADING...</div>)
+      return (<Loading />)
 
     if (error)
       return (

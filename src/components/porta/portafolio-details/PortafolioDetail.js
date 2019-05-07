@@ -17,6 +17,7 @@ import Paragraph from '../../shared/Paragraph'
 import SimpleList from '../../shared/SimpleList'
 import ColoredList from '../../shared/ColoredList'
 import TagsContainer from '../../shared/TagsContainer'
+import Loading from '../../shared/Loading'
 
 const styles = {
   projectDetailContainer: {
@@ -221,7 +222,7 @@ export class PortafolioDetail extends Component {
     const { isFetching, error, PortafolioDetailData } = this.state
 
     if (isFetching)
-      return (<div>LOADING...</div>)
+      return (<Loading />)
 
     if (error)
       return (
