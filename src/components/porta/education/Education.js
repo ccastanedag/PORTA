@@ -27,6 +27,11 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center'
   },
+  educationInfoContainerDesktop: {
+    flex: '1',
+    width: '70%',
+    alignSelf: 'center'
+  },
   // BEGIN - EducationBox styling
   educationBoxContainer: {
     background: 'white',
@@ -36,15 +41,15 @@ const styles = {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent : 'center',
+    justifyContent: 'center',
     padding: '0.35em 0.5em 0.35em 1em',
     margin: '0.35em 0',
     border: '3px solid #F8F8F8'
   },
-  educationBox:{
+  educationBox: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent:'center'
+    justifyContent: 'center'
   },
   time: {
     fontFamily: "Lato script=all rev=1",
@@ -65,8 +70,8 @@ const styles = {
     extend: 'time',
     fontSize: '0.9em'
   },
-  '@media screen and (min-width:768px)':{
-    time : {
+  '@media screen and (min-width:768px)': {
+    time: {
       fontSize: '1em'
     },
     school: {
@@ -75,8 +80,24 @@ const styles = {
     course: {
       fontSize: '1.1em'
     }
-  }
+  },
   // END - EducationBox styling
+  educationContainerDesktop: {
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  '@media screen and (min-width:1200px)': {
+    educationContainer: {
+      flex: '1'
+    },
+    timeLine: {
+
+    },
+    element: {
+
+    }
+  }
 }
 
 const EducationBox = ({ time, school, course, classes }) => {
@@ -143,25 +164,47 @@ export class Education extends Component {
         <div className={classes.educationContainer}>
           <MediaQuery maxWidth={1199}>
             <MobileHeader ownerName='Carlos Castañeda' />
-          </MediaQuery>
-          <PageTitle fontAwesomeIcon='fas fa-graduation-cap' pageTitle='Education' />
-          <div className={classes.educationInfoContainer}>
-            <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
-            <div className={classes.educationListContainer}>
-              {educationArray.map((education) => {
-                return (
-                  <EducationBox
-                    key={education.school}
-                    classes={classes}
-                    time={education.time}
-                    school={education.school}
-                    course={education.course} />
-                )
-              })
-              }
+            <PageTitle fontAwesomeIcon='fas fa-graduation-cap' pageTitle='Education' />
+            <div className={classes.educationInfoContainer}>
+              <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
+              <div className={classes.educationListContainer}>
+                {educationArray.map((education) => {
+                  return (
+                    <EducationBox
+                      key={education.school}
+                      classes={classes}
+                      time={education.time}
+                      school={education.school}
+                      course={education.course} />
+                  )
+                })
+                }
+              </div>
             </div>
-          </div>
-          <Footer />
+            <Footer />
+          </MediaQuery>
+          <MediaQuery minWidth={1200}>
+            <div className={classes.educationContainerDesktop}>
+              <PageTitle fontAwesomeIcon='fas fa-graduation-cap' pageTitle='Education' />
+              <div className={classes.educationInfoContainerDesktop}>
+                <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
+                <div className={classes.educationListContainer}>
+                  {educationArray.map((education) => {
+                    return (
+                      <EducationBox
+                        key={education.school}
+                        classes={classes}
+                        time={education.time}
+                        school={education.school}
+                        course={education.course} />
+                    )
+                  })
+                  }
+                </div>
+              </div>
+              <Footer />
+            </div>
+          </MediaQuery>
         </div>
       )
     }
