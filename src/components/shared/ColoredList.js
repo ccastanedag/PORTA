@@ -4,7 +4,7 @@ import withStyles from 'react-jss'
 
 const styles = {
   coloredListContainer: {
-    margin: '0.35em 0'
+    margin: '1em 0 0.35em 0'
   },
   list: {
     paddingLeft:'0',
