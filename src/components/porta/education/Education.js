@@ -151,6 +151,7 @@ export class Education extends Component {
               {educationArray.map((education) => {
                 return (
                   <EducationBox
+                    key={education.school}
                     classes={classes}
                     time={education.time}
                     school={education.school}

@@ -49,7 +49,7 @@ const TagsContainer = ({ classes, title, tagsArray, tagsArrayFb }) => {
           tagsArray.length === 0 &&
           tagsArrayFb.map((tagFb) => {
             return (
-              <Tag tagLogo={tagFb.technologyLogo} tagText={tagFb.technologyName} />
+              <Tag key={tagFb.technologyName} tagLogo={tagFb.technologyLogo} tagText={tagFb.technologyName} />
             )
           })
         }
