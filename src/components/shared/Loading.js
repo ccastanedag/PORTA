@@ -57,14 +57,15 @@ const styles = {
   }
 }
 
+var interval 
+
 export class Loading extends Component {
   state = {
     step: 'one'
   }
 
   componentDidMount() {
-    window.setInterval(function () {
-      console.log('timer')
+    interval = window.setInterval(function () {
       switch (this.state.step) {
         case 'one':
           return this.setState({
@@ -84,6 +85,10 @@ export class Loading extends Component {
           })
       }
     }.bind(this), 250)
+  }
+
+  componentWillUnmount(){
+    window.clearInterval(interval)
   }
 
   render() {
