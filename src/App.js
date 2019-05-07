@@ -17,6 +17,7 @@ import MediaQuery from 'react-responsive'
 import { categories } from './utils/categoriesUtils'
 import { convertToSlug } from './utils/utils'
 import Loading from './components/shared/Loading'
+import Message from './components/shared/Message'
 
 const styles = {
   appContainer: {
@@ -106,13 +107,11 @@ class App extends Component {
       return (<Loading />)
 
     if (error)
-      return (
-        <div>
-          THERE WAS AN ERROR !!!
-          <p>{error}</p>
-          {console.log('ERROR: ', error)}
-        </div>
-      )
+      return (<Message 
+        fontAwesomeIcon='fas fa-exclamation-circle' 
+        title='OOPS!' 
+        subTitle="COULDN'T CONNECT TO THE DATABASE"
+        message="The reason could be the database is temporarily unavailable, please try again later."/>)
 
     if (sideHeaderData !== undefined) {
       const { SideHeader } = sideHeaderData
@@ -142,6 +141,14 @@ class App extends Component {
                     <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
                     <Route path='/work-experience' component={WorkExperience} />
                     <Route path='/education' component={Education} />
+                    <Route render={()=>(
+                      <Message 
+                      fontAwesomeIcon='fas fa-search'
+                      title='Error 404'
+                      subTitle='PAGE NOT FOUND'
+                      message="The page you are looking for might have been removed, had its name changed or is temporarily unavailable"
+                      />
+                    )}/>
                   </Switch>
                 </div>
               </div>

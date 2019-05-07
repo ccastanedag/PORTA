@@ -18,6 +18,7 @@ import SimpleList from '../../shared/SimpleList'
 import ColoredList from '../../shared/ColoredList'
 import TagsContainer from '../../shared/TagsContainer'
 import Loading from '../../shared/Loading'
+import Message from '../../shared/Message'
 
 const styles = {
   projectDetailContainer: {
@@ -61,7 +62,7 @@ const styles = {
   },
   buttonsContainer: {
     display: 'flex',
-    flexWrap:'wrap',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     padding: '0.5em  0'
@@ -122,7 +123,7 @@ const styles = {
     fontSize: '0.8em',
     color: '#757892',
     marginBottom: '0.5em',
-    lineHeight:'1.6'
+    lineHeight: '1.6'
   },
   otherList: {
     padding: '0'
@@ -185,10 +186,10 @@ const styles = {
         }
       }
     },
-    portafolioDetail:{
-      display:'flex',
-      flexDirection:'column',
-      alignItems:'center'
+    portafolioDetail: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
     }
   }
 }
@@ -226,11 +227,11 @@ export class PortafolioDetail extends Component {
 
     if (error)
       return (
-        <div>
-          THERE WAS AN ERROR !!!
-        <p>{error}</p>
-          {console.log('ERROR: ', error)}
-        </div>
+        <Message
+          fontAwesomeIcon='fas fa-exclamation-circle'
+          title='OOPS!'
+          subTitle="COULDN'T CONNECT TO THE DATABASE"
+          message="The reason could be the database is temporarily unavailable, please try again later." />
       )
 
     if (PortafolioDetailData !== undefined) {
@@ -270,7 +271,7 @@ export class PortafolioDetail extends Component {
                     projectImages.map((image) => {
                       return (
                         <div>
-                          <img src={image} alt='Project pictures carousel'/>
+                          <img src={image} alt='Project pictures carousel' />
                         </div>
                       )
                     })
@@ -291,14 +292,14 @@ export class PortafolioDetail extends Component {
                 </div>
               </div>
               <div className={classes.technologiesContainer}>
-                <TagsContainer title='Main Technologies:' tagsArray={technologies} tagsArrayFb={technologiesFb}/>
-                <Title titleText={projectName}/>
-                <SubTitle subTitleText={`Development Time: ${developmentTime}`}/>
-                <Paragraph paragraphText={longDescription}/>
-                <SubTitle subTitleText='Responsabilities:'/>
-                <SimpleList items={responsabilities}/>
-                <SubTitle subTitleText='Other libraries and concepts used:'/>
-                <ColoredList items={othersUsed}/>
+                <TagsContainer title='Main Technologies:' tagsArray={technologies} tagsArrayFb={technologiesFb} />
+                <Title titleText={projectName} />
+                <SubTitle subTitleText={`Development Time: ${developmentTime}`} />
+                <Paragraph paragraphText={longDescription} />
+                <SubTitle subTitleText='Responsabilities:' />
+                <SimpleList items={responsabilities} />
+                <SubTitle subTitleText='Other libraries and concepts used:' />
+                <ColoredList items={othersUsed} />
               </div>
             </div>
             <Footer />
@@ -306,7 +307,12 @@ export class PortafolioDetail extends Component {
         )
       } else {
         return (
-          <div>PAGE NOT FOUND !!!</div>
+          <Message
+            fontAwesomeIcon='fas fa-search'
+            title='Error 404'
+            subTitle='PAGE NOT FOUND'
+            message="The page you are looking for might have been removed, had its name changed or is temporarily unavailable"
+          />
         )
       }
     }

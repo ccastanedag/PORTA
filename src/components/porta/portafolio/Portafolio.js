@@ -7,6 +7,7 @@ import PortafolioList from './PortafolioList'
 import { searchSlugIntoCategories } from '../../../utils/categoriesUtils'
 import Footer from '../../shared/Footer'
 import withStyles from 'react-jss'
+import Message from '../../shared/Message'
 
 const styles = {
   portafolioListContainer: {
@@ -61,12 +62,12 @@ export class Portafolio extends Component {
       )
     } else {
       return (
-        <div>
-          <MediaQuery maxWidth={1199}>
-            <MobileHeader ownerName='Carlos Castañeda' />
-          </MediaQuery>
-          <div>PAGE NOT FOUND !!!</div>
-        </div>
+        <Message
+            fontAwesomeIcon='fas fa-search'
+            title='Error 404'
+            subTitle='PAGE NOT FOUND'
+            message="The page you are looking for might have been removed, had its name changed or is temporarily unavailable"
+          />
       )
     }
   }

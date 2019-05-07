@@ -134,11 +134,11 @@ export class SideHeader extends Component {
 
     if (error) {
       return (
-        <div>
-          THERE WAS AN ERROR !!!
-          <p>{error}</p>
-          {console.log('ERROR: ', error)}
-        </div>
+        <Message 
+        fontAwesomeIcon='fas fa-exclamation-circle' 
+        title='OOPS!' 
+        subTitle="COULDN'T CONNECT TO THE DATABASE"
+        message="The reason could be the database is temporarily unavailable, please try again later."/>
       )
     }
 

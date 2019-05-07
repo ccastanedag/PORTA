@@ -14,6 +14,7 @@ import { connect } from 'react-redux'
 import Separator from '../../shared/Separator'
 import PropTypes from 'prop-types'
 import Loading from '../../shared/Loading'
+import Message from '../../shared/Message'
 
 const styles = {
   homeContainer: {
@@ -177,11 +178,11 @@ export class Home extends Component {
 
     if (error)
       return (
-        <div>
-          THERE WAS AN ERROR !!!
-        <p>{error}</p>
-          {console.log('ERROR: ', error)}
-        </div>
+        <Message 
+        fontAwesomeIcon='fas fa-exclamation-circle' 
+        title='OOPS!' 
+        subTitle="COULDN'T CONNECT TO THE DATABASE"
+        message="The reason could be the database is temporarily unavailable, please try again later."/>
       )
 
     if (homeData !== undefined) {
