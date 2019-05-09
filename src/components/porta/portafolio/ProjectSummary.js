@@ -104,7 +104,7 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
             })
           }
           <ButtonFactory
-            buttonText='See Details'
+            buttonText='Read More'
             fontAwesomeIcon='far fa-eye'
             redirectTo=''
             linkTo={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}
