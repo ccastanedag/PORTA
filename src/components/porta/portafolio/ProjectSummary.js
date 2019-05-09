@@ -44,7 +44,8 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     marginBottom: '0.5em',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent:'center'
   },
   buttonsContainer: {
     display: 'flex',
