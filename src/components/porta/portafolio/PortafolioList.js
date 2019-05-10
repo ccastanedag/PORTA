@@ -19,7 +19,8 @@ const styles = {
   '@media screen and (min-width:1200px)': {
     portafolioListContainer: {
       flexDirection: 'row',
-      flex:'1'
+      flex:'1',
+      flexWrap:'wrap'
     }
   }
 }
