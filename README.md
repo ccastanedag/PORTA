@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Porta_Logo](https://firebasestorage.googleapis.com/v0/b/porta-8211c.appspot.com/o/Projects%2FFront%20End%2FPortafolio%2Fportafolio-banner-github.png?alt=media&token=53018a8c-23c7-4b73-b7ae-02eaaa988b85)
+# PORTAFOLIO 
+This project is my personal website which works as a portafolio where I show all the projects I’ve worked in the past. Here you can see my work as a Front End Developer, Game Developer and 3D Simulator Programmer. The project use Firestore as database, React JS at the front end, and Redux-Thunk to consume the data.
 
-## Available Scripts
+### Live Demo
+You can try the Live Demo here: [PORTAFOLIO LIVE DEMO](https://google.com/)
 
-In the project directory, you can run:
+### Technologies and concepts used
+SKAPP was implemented using the following technlogies and software development tools and concepts:
+- React JS
+- Redux
+- React Router v4
+- JSS
+- Firebase
+- CSS Grid
+- Flexbox
+- Material UI
+- React Pose
+- Adobe XD
+- Prop Types
+- Particles JS
+- Redux Thunk
+- React Responsive
+- Responsive Carousel
+- Responsive Design
+- Mobile First Approach
 
-### `npm start`
+### Screenshots
+**Mobile Version**
+![](https://firebasestorage.googleapis.com/v0/b/porta-8211c.appspot.com/o/Projects%2FFront%20End%2FPortafolio%2FPortafolioDetail1.png?alt=media&token=22948605-6d68-46c6-b8b6-2b1ab8200ae6)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**Desktop Version**
+![](https://firebasestorage.googleapis.com/v0/b/porta-8211c.appspot.com/o/Projects%2FFront%20End%2FPortafolio%2Fportafolio-desktop-github.png?alt=media&token=200e47fe-c3f2-4f6b-bebb-5f15710c2353)
