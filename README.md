@@ -6,7 +6,7 @@ This project is my personal website which works as a portafolio where I show all
 You can try the Live Demo here: [PORTAFOLIO LIVE DEMO](https://google.com/)
 
 ### Technologies and concepts used
-This portafolio was implemented using the following technlogies and software development tools and concepts:
+This portafolio was implemented using the following technlogies, software development tools and concepts:
 - React JS
 - Redux
 - React Router v4
