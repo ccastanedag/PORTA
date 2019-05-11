@@ -1,6 +1,6 @@
 import { convertToSlug } from './utils'
 
-const categories = ['Front End', 'Game Development', '3D Simulation', 'Other Projects']
+const categories = ['Front End', 'Game Development', 'Military Simulators']
 
 function searchSlugIntoCategories(slug) {
   let result = false
