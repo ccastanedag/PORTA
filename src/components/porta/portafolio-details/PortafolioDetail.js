@@ -265,6 +265,11 @@ export class PortafolioDetail extends Component {
                 <Carousel
                   showThumbs={false}
                   dynamicHeight={true}
+                  autoPlay={true}
+                  stopOnHover={true}
+                  interval={2500}
+                  emulateTouch={true}
+                  infiniteLoop={true}
                   swipeScrollTolerance={0}>
                   {
                     projectImages.map((image) => {
