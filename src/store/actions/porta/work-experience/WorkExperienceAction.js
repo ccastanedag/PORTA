@@ -29,7 +29,7 @@ export default function handleLoadingWorkExperience() {
   return (dispatch, getState) => {
     const jobsRef = db.collection('jobs')
     dispatch(loadingWorkExperience())
-    jobsRef.get()
+    jobsRef.orderBy("order","asc").get()
       .then((jobsSnapshot) => {
         let jobs = jobsSnapshot.docs.map((job) => {
           return job.data()
