@@ -215,7 +215,7 @@ export class Education extends Component {
             <MobileHeader ownerName='Carlos Castañeda' />
             <PageTitle fontAwesomeIcon='fas fa-graduation-cap' pageTitle='Education' />
             <div className={classes.educationInfoContainer}>
-              <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
+              <TagsContainer title="Technologies I've used:" tagsArrayFb={techArray} />
               <div className={classes.educationListContainer}>
                 {educationArray.map((education) => {
                   return (
@@ -237,7 +237,7 @@ export class Education extends Component {
               <PageTitle fontAwesomeIcon='fas fa-graduation-cap' pageTitle='Education' />
               <div className={classes.educationInfoContainerDesktop}>
                 <div className={classes.tagsContainer}>
-                  <TagsContainer title='Main Skills:' tagsArrayFb={techArray} />
+                  <TagsContainer title="Technologies I've used:" tagsArrayFb={techArray} />
                 </div>
                 <div className={classes.timeLine}>
                   {educationArray.map((education) => {
