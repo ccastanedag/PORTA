@@ -8,6 +8,8 @@ import { connect } from 'react-redux'
 import ProjectSummary from './ProjectSummary'
 import Loading from '../../shared/Loading'
 import Message from '../../shared/Message'
+import MediaQuery from 'react-responsive'
+import MasonryLayout from '../../shared/MasonryLayout'
 
 const styles = {
   portafolioListContainer: {
@@ -19,8 +21,8 @@ const styles = {
   '@media screen and (min-width:1200px)': {
     portafolioListContainer: {
       flexDirection: 'row',
-      flex:'1',
-      flexWrap:'wrap'
+      flex: '1',
+      flexWrap: 'wrap'
     }
   }
 }
@@ -64,25 +66,42 @@ export class PortafolioList extends Component {
 
     if (error)
       return (
-        <Message 
-        fontAwesomeIcon='fas fa-exclamation-circle' 
-        title='OOPS!' 
-        subTitle="COULDN'T CONNECT TO THE DATABASE"
-        message="The reason could be the database is temporarily unavailable, please try again later."/>
+        <Message
+          fontAwesomeIcon='fas fa-exclamation-circle'
+          title='OOPS!'
+          subTitle="COULDN'T CONNECT TO THE DATABASE"
+          message="The reason could be the database is temporarily unavailable, please try again later." />
       )
 
     if (portafolioListData !== undefined) {
+      let projectSummaryArray = portafolioListData.projects.map((project) => {
+        return (
+          <ProjectSummary
+            key={project.projectName}
+            projectSummary={project}
+            technologiesFb={portafolioListData.technologies}
+            match={this.props.match} />
+        )
+      })
+
       return (
         <div className={classes.portafolioListContainer}>
-          {portafolioListData.projects.map((project) => {
-            return (
-              <ProjectSummary
-                key={project.projectName}
-                projectSummary={project}
-                technologiesFb={portafolioListData.technologies}
-                match={this.props.match} />
-            )
-          })}
+          <MediaQuery maxWidth={1199}>
+            {
+              projectSummaryArray.map((project) => {
+                return project
+              })
+            }
+          </MediaQuery>
+          <MediaQuery minWidth={1200}>
+            <MasonryLayout>
+              {
+                projectSummaryArray.map((project) => {
+                  return project
+                })
+              }
+            </MasonryLayout>
+          </MediaQuery>
         </div>
       )
     }

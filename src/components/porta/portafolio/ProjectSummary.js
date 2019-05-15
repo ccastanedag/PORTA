@@ -62,7 +62,7 @@ const styles = {
   '@media screen and (min-width: 1200px)': {
     projectSummaryContainer: {
       margin: '0em 0.5em',
-      width: '45%'
+      width: '98%'
     }
   }
 }
