@@ -244,6 +244,7 @@ export class PortafolioDetail extends Component {
           developmentTime,
           longDescription,
           responsabilities,
+          information,
           othersUsed } = projects[0]
         return (
           <div className={classes.portafolioDetail}>
@@ -303,8 +304,11 @@ export class PortafolioDetail extends Component {
                 <Paragraph paragraphText={longDescription} />
                 <SubTitle subTitleText='Responsabilities:' />
                 <SimpleList items={responsabilities} />
+                {information.length !== 0 && <SubTitle subTitleText='Information you should know:' />}
+                {information.length !== 0 && <SimpleList items={information} />}
                 <SubTitle subTitleText='Other libraries and concepts used:' />
                 <ColoredList items={othersUsed} />
+                
               </div>
             </div>
             <Footer />
