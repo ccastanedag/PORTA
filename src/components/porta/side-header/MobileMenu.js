@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { categories } from '../../../utils/categoriesUtils'
 import { convertToSlug } from '../../../utils/utils'
+import { CurriculumContext } from '../../../config/curriculumContext'
 
 const styles = {
   mobileMenuContainer: {
@@ -67,12 +68,12 @@ MobileMenuItem.propTypes = {
 }
 
 export class MobileMenu extends Component {
-
   static propTypes = {
     handleToggleMenu: PropTypes.func.isRequired
   }
   render() {
     const { classes, handleToggleMenu } = this.props
+    const curriculumUrl = this.context // from curriculumContext.js
     return (
       <div className={classes.mobileMenuContainer}>
         <Link to='/home' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
@@ -90,13 +91,15 @@ export class MobileMenu extends Component {
         <Link to='/contact-me' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-envelope' text='Contact Me' />
         </Link>
-        <Link to='/download-cv' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
+        <a href={curriculumUrl} target="_blank" rel="noopener noreferrer" className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-file-pdf' text='Download CV' />
-        </Link>
+        </a>
       </div>
     )
   }
 }
+
+MobileMenu.contextType = CurriculumContext
 
 MobileMenu.propTypes = {
   handleToggleMenu: PropTypes.func.isRequired
