@@ -41,7 +41,7 @@ export class Portafolio extends Component {
         <div className={classes.portafolioContainer}>
           <MediaQuery maxWidth={1199} className={classes.mobileContent}>
             <MobileHeader ownerName='Carlos Castañeda' />
-            <PageTitle fontAwesomeIcon='fas fa-folder-open' pageTitle='Portafolio' />
+            <PageTitle fontAwesomeIcon='fas fa-folder-open' pageTitle='Portfolio' />
             <CategoriesBar match={match} />
             <div className={classes.portafolioListContainer}>
               <PortafolioList match={match} />
@@ -50,7 +50,7 @@ export class Portafolio extends Component {
           </MediaQuery>
           <MediaQuery minWidth={1200} className={classes.desktopContent}>
             <div className={classes.portafolioDesktopContainer}>
-              <PageTitle fontAwesomeIcon='fas fa-folder-open' pageTitle='Portafolio' />
+              <PageTitle fontAwesomeIcon='fas fa-folder-open' pageTitle='Portfolio' />
               <CategoriesBar match={match} />
               <div className={classes.portafolioListContainer}>
                 <PortafolioList match={match} />

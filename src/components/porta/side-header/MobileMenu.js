@@ -79,8 +79,8 @@ export class MobileMenu extends Component {
         <Link to='/home' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-home' text='Home' />
         </Link>
-        <Link to={`/portafolio/${convertToSlug(categories[0])}`} className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
-          <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-folder-open' text='Portafolio' />
+        <Link to={`/portfolio/${convertToSlug(categories[0])}`} className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
+          <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-folder-open' text='Portfolio' />
         </Link>
         <Link to='/work-experience' className={classes.mobileMenuItemContainer} onClick={() => handleToggleMenu(false)}>
           <MobileMenuItem classes={classes} fontAwesomeIcon='fas fa-briefcase' text='Work Experience' />

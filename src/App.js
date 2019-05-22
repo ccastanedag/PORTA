@@ -139,9 +139,9 @@ class App extends Component {
                       <Route exact path='/' render={() => <Redirect to="/home" />} />
                       <Route path='/home' render={() => <Home sideHeader={SideHeader} />} />
                       <Route path='/contact-me' component={ContactMe} />
-                      <Route exact path='/portafolio' render={() => <Redirect to={`/portafolio/${convertToSlug(categories[0])}`} />} />
-                      <Route exact path='/portafolio/:categoryId' component={Portafolio} />
-                      <Route path='/portafolio/:categoryId/:projectId' component={PortafolioDetail} />
+                      <Route exact path='/portfolio' render={() => <Redirect to={`/portfolio/${convertToSlug(categories[0])}`} />} />
+                      <Route exact path='/portfolio/:categoryId' component={Portafolio} />
+                      <Route path='/portfolio/:categoryId/:projectId' component={PortafolioDetail} />
                       <Route path='/work-experience' component={WorkExperience} />
                       <Route path='/education' component={Education} />
                       <Route render={() => (

@@ -62,7 +62,7 @@ export class CategoriesBar extends Component {
           categories.map((category) => {
             return (
               <div key={category} className={`${classes.category} ${categoryId === convertToSlug(category) ? classes.selected : null}`}>
-                <Link className={classes.link} id={category} to={`/portafolio/${convertToSlug(category)}`}>
+                <Link className={classes.link} id={category} to={`/portfolio/${convertToSlug(category)}`}>
                   {category}
                 </Link>
               </div>

@@ -116,9 +116,9 @@ export class Navbar extends Component {
       this.setState({
         selectedNavButton:'HOME'
       })
-    } else if(pathName.includes('portafolio')){
+    } else if(pathName.includes('portfolio')){
       this.setState({
-        selectedNavButton:'PORTAFOLIO'
+        selectedNavButton:'PORTFOLIO'
       })
     } else  if(pathName.includes('work-experience')){
       this.setState({
@@ -168,7 +168,7 @@ export class Navbar extends Component {
           </div>
           <div className={classes.navButtons}>
             <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-home' text='home' top={false} bottom={true} selected={this.state.selectedNavButton === 'HOME' ? true : false} />
-            <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-folder-open' text='portafolio' top={true} bottom={true} selected={this.state.selectedNavButton === 'PORTAFOLIO' ? true : false} />
+            <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-folder-open' text='portfolio' top={true} bottom={true} selected={this.state.selectedNavButton === 'PORTFOLIO' ? true : false} />
             <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-briefcase' text='work experience' top={true} bottom={true} selected={this.state.selectedNavButton === 'WORK EXPERIENCE' ? true : false} />
             <NavButton handleUpdate={this.updateSelectedNavButton} fontAwesomeIcon='fas fa-graduation-cap' text='education' top={true} bottom={false} selected={this.state.selectedNavButton === 'EDUCATION' ? true : false} />
           </div>

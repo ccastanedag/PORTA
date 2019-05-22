@@ -75,7 +75,7 @@ const styles = {
 }
 /**
  *  @redirectTo are links outside of the application. Ex: https://youtube.com
- *  @linkTo are links inside of the application. Ex: /portafolio/game-development
+ *  @linkTo are links inside of the application. Ex: /portfolio/game-development
  */
 const ButtonFactory = ({ classes, buttonText, fontAwesomeIcon, redirectTo, linkTo }) => {
   if (linkTo) {

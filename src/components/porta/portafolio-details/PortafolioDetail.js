@@ -254,12 +254,12 @@ export class PortafolioDetail extends Component {
               </MediaQuery>
               <div className={classes.navBarContainer}>
                 <MediaQuery maxWidth={1199}>
-                  <Link to={`/portafolio/`} className={classes.portafolio}>
+                  <Link to={`/portfolio/`} className={classes.portafolio}>
                     <i className={`fas fa-folder-open ${classes.icon}`}></i>
-                    <div>Portafolio</div>
+                    <div>Portfolio</div>
                   </Link>
                 </MediaQuery>
-                <Link to={`/portafolio/${categoryId}`} className={classes.section}>{convertSlugToTitle(categoryId)}</Link>
+                <Link to={`/portfolio/${categoryId}`} className={classes.section}>{convertSlugToTitle(categoryId)}</Link>
                 <div className={classes.section}>{convertSlugToTitle(projectId)}</div>
               </div>
               <div className={classes.projectInfoContainer}>

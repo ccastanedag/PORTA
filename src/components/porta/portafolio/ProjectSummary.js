@@ -72,11 +72,11 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
   const { projectImages, projectName, shortDescription, technologies, buttons } = projectSummary
   return (
     <div className={classes.projectSummaryContainer}>
-      <Link className={classes.linkImage} to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
+      <Link className={classes.linkImage} to={`/portfolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
         <img className={classes.projectImage} src={`${projectImages[0]}`} alt={`Project ${projectName}`} />
       </Link>
       <div className={classes.projectInfoContainer}>
-        <Link to={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
+        <Link to={`/portfolio/${match.params.categoryId}/${convertToSlug(projectName)}`}>
           <Title titleText={projectName}/>
           <Paragraph paragraphText={shortDescription}/>
         </Link>
@@ -108,7 +108,7 @@ const ProjectSummary = ({ classes, projectSummary, technologiesFb, match }) => {
             buttonText='Read More'
             fontAwesomeIcon='far fa-eye'
             redirectTo=''
-            linkTo={`/portafolio/${match.params.categoryId}/${convertToSlug(projectName)}`}
+            linkTo={`/portfolio/${match.params.categoryId}/${convertToSlug(projectName)}`}
             gradient={{ start: '#8989CB', end: '#86A8E7' }} />
         </div>
       </div>
