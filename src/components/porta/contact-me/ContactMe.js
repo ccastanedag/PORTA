@@ -14,6 +14,7 @@ import green from '@material-ui/core/colors/green'
 import IconButton from '@material-ui/core/IconButton'
 import classNames from 'classnames'
 import CloseIcon from '@material-ui/icons/Close'
+import Loading from '../../shared/Loading'
 import { withStyles as withStylesUI } from '@material-ui/core/styles'
 import {
   REACT_APP_EMAILJS_RECEIVER as receiverEmail,
@@ -127,6 +128,21 @@ const styles = {
       width: '49%'
     }
   },
+  buttonLoader: {
+    alignSelf: 'flex-start',
+    display: 'flex',
+    position: 'relative'
+  },
+  loader: {
+    position: 'absolute',
+    bottom: '30%',
+    left: '100%',
+    width: '50px',
+    height: '50px',
+    background: 'red',
+    height: 'auto',
+    display: 'flex'
+  },
   '@media screen and (max-width:1199px)': {
     '@global': {
       html: {
@@ -205,7 +221,8 @@ export class ContactMe extends Component {
     successOpen: false,
     errorOpen: false,
     emptyOpen: false,
-    sendClicked: false // This works as some sort of cooldown to avoid multiple clicks on SEND
+    sendClicked: false, // This works as some sort of cooldown to avoid multiple clicks on SEND
+    isSending: false
   }
 
   handleSubmit = (event) => {
@@ -219,7 +236,8 @@ export class ContactMe extends Component {
       (message !== '')) {
       if (!this.state.sendClicked) {
         this.setState({
-          sendClicked: true
+          sendClicked: true,
+          isSending: true
         })
         this.sendEmail(
           template,
@@ -255,13 +273,15 @@ export class ContactMe extends Component {
           subject: '',
           message: '',
           successOpen: true,
-          sendClicked: false
+          sendClicked: false,
+          isSending: false
         })
       })
       .catch(error => {
         // Show the Snackbar message - Error
         this.setState({
-          errorOpen: true
+          errorOpen: true,
+          isSending: false
         })
         console.error('Failed to send email. Error: ', error)
       })
@@ -334,13 +354,23 @@ export class ContactMe extends Component {
                     className={classes.textarea}
                     rows={5} />
                 </label>
-                <button type='submit' className={classes.sendButton}>
-                  <ButtonFactory
-                    buttonText='Send'
-                    fontAwesomeIcon='fas fa-paper-plane'
-                    redirectTo=''
-                    gradient={{ start: '#8989CB', end: '#86A8E7' }} />
-                </button>
+                <div className={classes.buttonLoader}>
+                  <button type='submit' className={classes.sendButton}>
+                    <ButtonFactory
+                      buttonText='Send'
+                      fontAwesomeIcon='fas fa-paper-plane'
+                      redirectTo=''
+                      gradient={{ start: '#8989CB', end: '#86A8E7' }} />
+                  </button>
+                  <div className={classes.loader}>
+                    {this.state.isSending &&
+                      <Loading loadingText=''
+                        isColumn={true}
+                        fullHeight={false}
+                        dimension='10px'
+                        distance={6} />}
+                  </div>
+                </div>
               </form>
             </div>
             <Footer />
@@ -392,13 +422,23 @@ export class ContactMe extends Component {
                     className={classes.textarea}
                     rows={5} />
                 </label>
-                <button type='submit' className={classes.sendButton}>
-                  <ButtonFactory
-                    buttonText='Send'
-                    fontAwesomeIcon='fas fa-paper-plane'
-                    redirectTo=''
-                    gradient={{ start: '#8989CB', end: '#86A8E7' }} />
-                </button>
+                <div className={classes.buttonLoader}>
+                  <button type='submit' className={classes.sendButton}>
+                    <ButtonFactory
+                      buttonText='Send'
+                      fontAwesomeIcon='fas fa-paper-plane'
+                      redirectTo=''
+                      gradient={{ start: '#8989CB', end: '#86A8E7' }} />
+                  </button>
+                  <div className={classes.loader}>
+                    {this.state.isSending &&
+                      <Loading loadingText=''
+                        isColumn={true}
+                        fullHeight={false}
+                        dimension='10px'
+                        distance={6} />}
+                  </div>
+                </div>
               </form>
             </div>
           </div>
